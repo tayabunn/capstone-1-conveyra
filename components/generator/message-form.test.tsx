@@ -54,7 +54,7 @@ describe('MessageForm', () => {
     const handleSubmit = vi.fn();
     render(<MessageForm onSubmit={handleSubmit} isLoading={true} />);
     
-    const submitButton = screen.getByRole('button', { name: /generating/i });
+    const submitButton = screen.getByRole('button', { name: /understanding your context/i });
     expect(submitButton).toBeDisabled();
     
     expect(screen.getByLabelText(/describe what you want to say/i)).toBeDisabled();

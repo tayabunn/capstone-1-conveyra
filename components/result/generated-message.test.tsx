@@ -15,6 +15,7 @@ describe('GeneratedMessage', () => {
         data={mockData} 
         onRegenerate={vi.fn()} 
         onEdit={vi.fn()} 
+        onStartNew={vi.fn()}
       />
     );
     

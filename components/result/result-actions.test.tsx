@@ -13,6 +13,7 @@ describe('ResultActions', () => {
         messageText="Test message" 
         onRegenerate={vi.fn()} 
         onEdit={vi.fn()} 
+        onStartNew={vi.fn()}
       />
     );
     
@@ -29,15 +30,17 @@ describe('ResultActions', () => {
     });
   });
 
-  it('calls onRegenerate and onEdit', () => {
+  it('calls onRegenerate, onEdit, and onStartNew', () => {
     const handleRegenerate = vi.fn();
     const handleEdit = vi.fn();
+    const handleStartNew = vi.fn();
     
     render(
       <ResultActions 
         messageText="Test" 
         onRegenerate={handleRegenerate} 
         onEdit={handleEdit} 
+        onStartNew={handleStartNew}
       />
     );
     
@@ -46,6 +49,9 @@ describe('ResultActions', () => {
     
     fireEvent.click(screen.getByRole('button', { name: /edit details/i }));
     expect(handleEdit).toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole('button', { name: /start new/i }));
+    expect(handleStartNew).toHaveBeenCalled();
   });
 
   it('disables buttons when loading', () => {
@@ -54,11 +60,13 @@ describe('ResultActions', () => {
         messageText="Test" 
         onRegenerate={vi.fn()} 
         onEdit={vi.fn()} 
+        onStartNew={vi.fn()}
         isLoading={true}
       />
     );
     
     expect(screen.getByRole('button', { name: /generate another/i })).toBeDisabled();
     expect(screen.getByRole('button', { name: /edit details/i })).toBeDisabled();
+    expect(screen.getByRole('button', { name: /start new/i })).toBeDisabled();
   });
 });
