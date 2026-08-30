@@ -4,11 +4,14 @@ export function ConveyraLogo() {
   return (
     <Link 
       href="/" 
-      className="flex items-center gap-[0.4rem] group outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm transition-opacity hover:opacity-80"
+      className="inline-flex items-center gap-2.5 group outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md transition-opacity hover:opacity-90"
+      aria-label="Conveyra Homepage"
     >
-      <div className="w-3.5 h-3.5 rounded-sm bg-foreground shadow-sm" />
-      <span className="font-extrabold text-xl tracking-tighter text-foreground">
-        Conveyra.
+      <div className="w-5 h-5 rounded-[5px] bg-foreground text-background flex items-center justify-center font-mono text-[11px] font-black tracking-tight select-none shadow-subtle group-hover:bg-brand transition-colors">
+        C
+      </div>
+      <span className="font-bold text-lg tracking-tight text-foreground">
+        Conveyra<span className="text-brand font-black">.</span>
       </span>
     </Link>
   );

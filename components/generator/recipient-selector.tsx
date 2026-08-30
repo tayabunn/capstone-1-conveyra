@@ -7,20 +7,21 @@ interface RecipientSelectorProps extends React.SelectHTMLAttributes<HTMLSelectEl
 }
 
 export const RecipientSelector = forwardRef<HTMLSelectElement, RecipientSelectorProps>(
-  ({ className, error, ...props }, ref) => {
+  ({ className, error, disabled, ...props }, ref) => {
     return (
       <div className="space-y-2.5">
         <label htmlFor="recipient" className="block text-sm font-semibold text-foreground tracking-tight">
           Who are you writing to? <span className="text-destructive" aria-hidden="true">*</span>
         </label>
-        <div className="relative">
+        <div className="relative group">
           <select
             id="recipient"
             ref={ref}
+            disabled={disabled}
             aria-invalid={!!error}
             aria-describedby={error ? "recipient-error" : undefined}
             className={cn(
-              "appearance-none flex h-14 w-full items-center justify-between rounded-2xl border border-input bg-card/50 px-5 py-2 text-base font-medium text-foreground shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50",
+              "appearance-none flex h-13 w-full items-center justify-between rounded-xl border border-input bg-card px-4 py-2.5 text-sm font-medium text-foreground shadow-subtle transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 hover:border-foreground/30 cursor-pointer",
               error && "border-destructive focus:ring-destructive",
               className
             )}
@@ -34,13 +35,13 @@ export const RecipientSelector = forwardRef<HTMLSelectElement, RecipientSelector
             <option value="family">Family</option>
             <option value="other">Other</option>
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted-foreground">
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted-foreground group-hover:text-foreground transition-colors">
             <ChevronDown className="h-4 w-4" />
           </div>
         </div>
         {error && (
-          <p className="text-sm text-destructive font-medium animate-in slide-in-from-top-1 flex items-center gap-1.5" id="recipient-error" role="alert">
-            <AlertCircle className="w-4 h-4" />
+          <p className="text-xs text-destructive font-medium flex items-center gap-1.5 pt-0.5" id="recipient-error" role="alert">
+            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
             {error}
           </p>
         )}

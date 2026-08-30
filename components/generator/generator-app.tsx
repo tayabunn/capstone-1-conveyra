@@ -16,7 +16,7 @@ export function GeneratorApp() {
 
   const scrollToTop = () => {
     if (containerRef.current) {
-      const y = containerRef.current.getBoundingClientRect().top + window.scrollY - 100;
+      const y = containerRef.current.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
@@ -25,7 +25,6 @@ export function GeneratorApp() {
     setStatus("loading");
     setError(null);
     setFormData(data);
-    scrollToTop();
     
     try {
       const response = await fetch("/api/generate-message", {
@@ -44,9 +43,11 @@ export function GeneratorApp() {
       const resultData = await response.json();
       setResult(resultData);
       setStatus("success");
+      scrollToTop();
     } catch (err: any) {
       setError(err.message || "An unexpected error occurred. Please try again.");
       setStatus("error");
+      scrollToTop();
     }
   };
 
@@ -72,12 +73,16 @@ export function GeneratorApp() {
   };
 
   return (
-    <div ref={containerRef} className="bg-card border border-border/40 rounded-3xl shadow-[var(--shadow-premium)] dark:shadow-[var(--shadow-premium-dark)] p-8 sm:p-14 min-h-[400px] transition-all">
+    <div 
+      id="generator"
+      ref={containerRef} 
+      className="bg-card border border-border/80 rounded-3xl shadow-card dark:shadow-card-dark p-6 sm:p-10 md:p-12 min-h-[420px] transition-all"
+    >
       {status === "error" ? (
-        <div className="space-y-12">
+        <div className="space-y-10">
           <ErrorState error={error || "Unknown error"} onRetry={handleRegenerate} />
-          <div className="border-t border-border/50 pt-10">
-            <h3 className="text-xl font-bold tracking-tight text-foreground mb-8">Your Details</h3>
+          <div className="border-t border-border/50 pt-8">
+            <h3 className="text-sm font-bold tracking-tight text-foreground mb-6 uppercase font-mono">Your Submission</h3>
             <MessageForm 
               initialData={formData}
               onSubmit={handleGenerate}

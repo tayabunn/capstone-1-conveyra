@@ -20,22 +20,34 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-border: var(--brand-border);
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
 
   --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
-  --radius-sm: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
   --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 2px);
-  --radius-xl: calc(var(--radius) + 6px);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
   
-  --shadow-premium: 0 4px 24px -6px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.15);
-  --shadow-premium-dark: 0 8px 32px -8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-card-dark: 0 8px 30px -4px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.07);
+  --shadow-elevated: 0 16px 40px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-elevated-dark: 0 20px 48px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.09);
+  --shadow-brand-glow: 0 0 24px -4px rgba(124, 58, 237, 0.25);
+  --shadow-brand-glow-dark: 0 0 28px -4px rgba(139, 92, 246, 0.35);
 }
 
 :root {
@@ -48,58 +60,86 @@
   --primary: #09090b;
   --primary-foreground: #ffffff;
 
-  --secondary: #f4f4f5;
+  --secondary: #f4f4f6;
   --secondary-foreground: #09090b;
 
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
+  --muted: #ececed;
+  --muted-foreground: #646470;
 
-  --accent: #f4f4f5;
+  --accent: #f4f4f6;
   --accent-foreground: #09090b;
 
-  --destructive: #ef4444;
+  /* Controlled Purple Accent */
+  --brand: #6d28d9;
+  --brand-foreground: #ffffff;
+  --brand-subtle: #f5f3ff;
+  --brand-border: #ddd6fe;
+
+  --destructive: #dc2626;
   --destructive-foreground: #ffffff;
 
   --border: #e4e4e7;
+  --border-subtle: #f0f0f2;
   --input: #e4e4e7;
-  --ring: #09090b;
+  --ring: #6d28d9;
 
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 }
 
 .dark {
   --background: #09090b;
-  --foreground: #fafafa;
+  --foreground: #f4f4f6;
 
-  --card: #09090b;
-  --card-foreground: #fafafa;
+  --card: #111115;
+  --card-foreground: #f4f4f6;
 
-  --primary: #fafafa;
+  --primary: #f4f4f6;
   --primary-foreground: #09090b;
 
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
+  --secondary: #17171d;
+  --secondary-foreground: #f4f4f6;
 
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
+  --muted: #202028;
+  --muted-foreground: #8f8f9d;
 
-  --accent: #27272a;
-  --accent-foreground: #fafafa;
+  --accent: #1c1c24;
+  --accent-foreground: #f4f4f6;
+
+  /* Controlled Purple Accent */
+  --brand: #8b5cf6;
+  --brand-foreground: #ffffff;
+  --brand-subtle: rgba(139, 92, 246, 0.12);
+  --brand-border: rgba(139, 92, 246, 0.3);
 
   --destructive: #ef4444;
-  --destructive-foreground: #fafafa;
+  --destructive-foreground: #ffffff;
 
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #d4d4d8;
+  --border: #23232b;
+  --border-subtle: #1a1a22;
+  --input: #262632;
+  --ring: #8b5cf6;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/10 selection:text-primary;
-    font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+    @apply bg-background text-foreground antialiased selection:bg-brand selection:text-brand-foreground;
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
