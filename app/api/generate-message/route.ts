@@ -13,21 +13,22 @@ import { checkRateLimit } from "@/lib/rate-limiter";
  */
 export const maxDuration = 30;
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-
 // Maximum allowed raw JSON payload size: 32 KB
 const MAX_PAYLOAD_BYTES = 32 * 1024;
 
 export async function POST(req: Request) {
   try {
     // 1. Ensure API key is configured on server
-    if (!process.env.GEMINI_API_KEY) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
       console.error("GEMINI_API_KEY is not configured.");
       return NextResponse.json(
         { error: "Internal server configuration error. Please try again later." },
         { status: 500 }
       );
     }
+
+    const ai = new GoogleGenAI({ apiKey });
 
     // 2. Client IP extraction & Rate Limiting Abuse Protection (10 req / min)
     const clientIp =

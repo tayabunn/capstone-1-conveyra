@@ -25,7 +25,7 @@ describe('GeneratorApp Integration Flow', () => {
     vi.mocked(global.fetch).mockResolvedValueOnce({
       ok: true,
       json: async () => mockResponse,
-    } as Response);
+    } as unknown as Response);
 
     render(<GeneratorApp />);
 
@@ -48,7 +48,7 @@ describe('GeneratorApp Integration Flow', () => {
     vi.mocked(global.fetch).mockResolvedValueOnce({
       ok: false,
       json: async () => ({ error: 'Rate limit exceeded. Please wait.' }),
-    } as Response);
+    } as unknown as Response);
 
     render(<GeneratorApp />);
 
@@ -76,7 +76,7 @@ describe('GeneratorApp Integration Flow', () => {
         approach: 'Initial approach.',
         alternative: 'Initial alternative.',
       }),
-    } as Response);
+    } as unknown as Response);
 
     render(<GeneratorApp />);
 
@@ -141,7 +141,7 @@ describe('GeneratorApp Integration Flow', () => {
       json: async () => {
         throw new Error('Invalid JSON received');
       },
-    } as Response);
+    } as unknown as Response);
 
     render(<GeneratorApp />);
 
@@ -169,7 +169,7 @@ describe('GeneratorApp Integration Flow', () => {
         approach: 'Initial approach.',
         alternative: 'Initial alternative.',
       }),
-    } as Response);
+    } as unknown as Response);
 
     render(<GeneratorApp />);
 

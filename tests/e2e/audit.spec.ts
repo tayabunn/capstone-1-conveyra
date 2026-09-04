@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 interface ViolationItem {
   id: string;
-  impact?: string;
+  impact?: string | null;
   description: string;
   nodes: number;
 }

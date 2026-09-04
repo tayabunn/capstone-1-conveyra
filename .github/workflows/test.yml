@@ -10,6 +10,8 @@ jobs:
   test:
     name: Test & Build Validation
     runs-on: ubuntu-latest
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || 'dummy_test_key_for_ci_build' }}
 
     steps:
       - name: Checkout Code
