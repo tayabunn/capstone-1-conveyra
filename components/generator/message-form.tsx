@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { z } from "zod";
-import { Loader2, AlertCircle, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
+import { Loader2, AlertCircle, ArrowRight, Sparkles, ChevronDown, XCircle } from "lucide-react";
 import { generateMessageSchema, type GenerateMessageInput } from "@/lib/schemas";
 import { RecipientSelector } from "./recipient-selector";
 import { ToneSelector } from "./tone-selector";
@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 interface MessageFormProps {
   initialData?: Partial<GenerateMessageInput>;
   onSubmit: (data: GenerateMessageInput) => void;
+  onCancel?: () => void;
   isLoading?: boolean;
 }
 
@@ -23,7 +24,7 @@ const loadingMessages = [
   "Polishing final output...",
 ];
 
-export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormProps) {
+export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: MessageFormProps) {
   const [formData, setFormData] = useState<Partial<GenerateMessageInput>>(initialData || {
     context: "",
     recipient: undefined,
@@ -36,13 +37,10 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
   const [showDraft, setShowDraft] = useState(!!initialData?.draft);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isLoading) {
-      setLoadingIndex(0);
-      interval = setInterval(() => {
-        setLoadingIndex((prev) => (prev + 1) % loadingMessages.length);
-      }, 2400);
-    }
+    if (!isLoading) return;
+    const interval = setInterval(() => {
+      setLoadingIndex((prev) => (prev + 1) % loadingMessages.length);
+    }, 2200);
     return () => clearInterval(interval);
   }, [isLoading]);
 
@@ -82,25 +80,25 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-10" noValidate>
-      {/* STEP 01 */}
-      <div className="space-y-3.5">
+    <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+      {/* 01 — YOUR THOUGHT (PRIMARY HERO INPUT) */}
+      <div className="space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[11px] font-bold tracking-widest text-muted-foreground uppercase px-2 py-0.5 rounded bg-secondary border border-border/50">
-              Step 01
+            <span className="font-mono text-[10px] font-bold tracking-widest text-electric uppercase px-2 py-0.5 rounded-md bg-electric-subtle border border-electric-border">
+              01 — Thought
             </span>
-            <label htmlFor="context" className="text-sm sm:text-base font-bold tracking-tight text-foreground">
+            <label htmlFor="context" className="text-sm font-bold tracking-tight text-foreground">
               Describe what you want to say <span className="text-destructive" aria-hidden="true">*</span>
             </label>
           </div>
-          <span className={cn("text-xs font-mono tabular-nums", (formData.context?.length || 0) > 2000 ? "text-destructive font-semibold" : "text-muted-foreground")}>
+          <span className={cn("text-xs font-mono tabular-nums", (formData.context?.length || 0) > 2000 ? "text-destructive font-bold" : "text-muted-foreground")}>
             {(formData.context?.length || 0).toLocaleString()} / 2,000
           </span>
         </div>
 
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed" id="context-description">
-          Be honest and raw. Mention what happened, what you need to achieve, and any boundaries to keep.
+        <p className="text-xs text-muted-foreground leading-relaxed" id="context-description">
+          Be unfiltered and honest. Describe the situation, your objective, and any boundaries to maintain.
         </p>
 
         <div className="relative">
@@ -116,10 +114,10 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
               if (errors.context) setErrors({ ...errors, context: "" });
             }}
             disabled={isLoading}
-            placeholder="e.g. A client asked for 3 additional rounds of design revisions outside our milestone agreement. I want to decline politely and offer a paid add-on without sounding hostile."
+            placeholder="e.g. A client asked for 3 additional rounds of revisions outside our milestone agreement. I want to decline politely and offer a paid add-on without sounding hostile."
             rows={5}
             className={cn(
-              "w-full rounded-2xl border border-input bg-background/50 px-5 py-4 text-sm sm:text-base text-foreground shadow-subtle ring-offset-background placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 resize-y transition-all leading-relaxed",
+              "w-full rounded-xl border border-input bg-card px-4 sm:px-5 py-3.5 sm:py-4 text-sm sm:text-base text-foreground shadow-subtle ring-offset-background placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 resize-y transition-all leading-relaxed",
               errors.context && "border-destructive focus:ring-destructive"
             )}
           />
@@ -133,21 +131,19 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
         )}
       </div>
 
-      {/* STEP 02 & STEP 03 */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 border-t border-border/50">
-        <div className="lg:col-span-5 space-y-3.5">
+      {/* 02 — CONTEXT & 03 — CALIBRATION */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-6 border-t border-border">
+        {/* Step 02: Recipient */}
+        <div className="md:col-span-5 space-y-2">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[11px] font-bold tracking-widest text-muted-foreground uppercase px-2 py-0.5 rounded bg-secondary border border-border/50">
-              Step 02
-            </span>
-            <span className="text-sm font-bold tracking-tight text-foreground">
-              Recipient
+            <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-2 py-0.5 rounded-md bg-brand-subtle border border-brand-border">
+              02 — Recipient
             </span>
           </div>
           <RecipientSelector
             value={formData.recipient || ""}
             onChange={(e) => {
-              setFormData({ ...formData, recipient: e.target.value as any });
+              setFormData({ ...formData, recipient: e.target.value as GenerateMessageInput["recipient"] });
               if (errors.recipient) setErrors({ ...errors, recipient: "" });
             }}
             error={errors.recipient}
@@ -156,19 +152,17 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
           />
         </div>
 
-        <div className="lg:col-span-7 space-y-3.5">
+        {/* Step 03: Tone */}
+        <div className="md:col-span-7 space-y-2">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[11px] font-bold tracking-widest text-muted-foreground uppercase px-2 py-0.5 rounded bg-secondary border border-border/50">
-              Step 03
-            </span>
-            <span className="text-sm font-bold tracking-tight text-foreground">
-              Tone
+            <span className="font-mono text-[10px] font-bold tracking-widest text-lavender-foreground uppercase px-2 py-0.5 rounded-md bg-lavender border border-brand-border/40">
+              03 — Tone
             </span>
           </div>
           <ToneSelector
             value={formData.tone}
             onChange={(val) => {
-              setFormData({ ...formData, tone: val as any });
+              setFormData({ ...formData, tone: val as GenerateMessageInput["tone"] });
               if (errors.tone) setErrors({ ...errors, tone: "" });
             }}
             error={errors.tone}
@@ -177,20 +171,17 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
         </div>
       </div>
 
-      {/* STEP 04 */}
-      <div className="pt-8 border-t border-border/50 space-y-3.5">
+      {/* 04 — LENGTH */}
+      <div className="pt-6 border-t border-border space-y-2">
         <div className="flex items-center gap-2 mb-1">
-          <span className="font-mono text-[11px] font-bold tracking-widest text-muted-foreground uppercase px-2 py-0.5 rounded bg-secondary border border-border/50">
-            Step 04
-          </span>
-          <span className="text-sm font-bold tracking-tight text-foreground">
-            Length
+          <span className="font-mono text-[10px] font-bold tracking-widest text-foreground uppercase px-2 py-0.5 rounded-md bg-secondary border border-border">
+            04 — Length
           </span>
         </div>
         <LengthSelector
           value={formData.length}
           onChange={(val) => {
-            setFormData({ ...formData, length: val as any });
+            setFormData({ ...formData, length: val as GenerateMessageInput["length"] });
             if (errors.length) setErrors({ ...errors, length: "" });
           }}
           error={errors.length}
@@ -199,16 +190,16 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
       </div>
 
       {/* OPTIONAL ROUGH DRAFT */}
-      <div className="pt-6 border-t border-border/40">
+      <div className="pt-4 border-t border-border-subtle">
         <div className="flex items-center justify-between">
-          <label htmlFor="draft" className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-foreground tracking-tight cursor-pointer">
-            <span>Already wrote something?</span>
-            <span className="text-xs font-normal text-muted-foreground">(Optional draft)</span>
+          <label htmlFor="draft" className="flex items-center gap-2 text-xs font-semibold text-foreground tracking-tight cursor-pointer">
+            <span>Already drafted something?</span>
+            <span className="text-[11px] font-normal text-muted-foreground">(Optional draft)</span>
           </label>
           <button
             type="button"
             onClick={() => setShowDraft(!showDraft)}
-            className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+            className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 cursor-pointer"
           >
             {showDraft ? "Hide draft" : "Add rough draft"}
             <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", showDraft && "rotate-180")} />
@@ -216,9 +207,9 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
         </div>
 
         {showDraft && (
-          <div className="mt-3.5 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="mt-3 space-y-2 animate-in fade-in duration-200">
             <p className="text-xs text-muted-foreground leading-relaxed" id="draft-description">
-              Paste your rough thoughts or messy draft. Conveyra will refine the language while preserving your core points.
+              Paste your raw thoughts or initial draft. Conveyra will calibrate the tone while preserving your core points.
             </p>
             <textarea
               id="draft"
@@ -232,9 +223,9 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
               }}
               disabled={isLoading}
               rows={3}
-              placeholder="Paste any rough email or chat you began writing..."
+              placeholder="Paste any rough email or message you started writing..."
               className={cn(
-                "w-full rounded-xl border border-input bg-card/60 px-4 py-3 text-sm text-foreground shadow-subtle placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 resize-y transition-all",
+                "w-full rounded-xl border border-input bg-card px-4 py-3 text-xs sm:text-sm text-foreground shadow-subtle placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 resize-y transition-all",
                 errors.draft && "border-destructive focus:ring-destructive"
               )}
             />
@@ -248,30 +239,44 @@ export function MessageForm({ initialData, onSubmit, isLoading }: MessageFormPro
         )}
       </div>
 
-      {/* PRIMARY CTA */}
-      <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* PRIMARY DOMINANT ACTION CTA */}
+      <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Sparkles className="w-3.5 h-3.5 text-muted-foreground" />
-          <span>Structured output powered by Gemini 3.6</span>
+          <Sparkles className="w-3.5 h-3.5 text-brand" />
+          <span>Calibrated generation via Gemini 3.6</span>
         </div>
 
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-8 py-4 text-sm sm:text-base font-bold tracking-tight shadow-card dark:shadow-card-dark transition-all duration-150 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
-        >
-          {isLoading ? (
-            <span className="flex items-center gap-2.5">
-              <Loader2 className="h-4 w-4 animate-spin shrink-0" />
-              <span>{loadingMessages[loadingIndex]}</span>
-            </span>
-          ) : (
-            <>
-              <span>Generate Message</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-            </>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          {isLoading && onCancel && (
+            <button
+              type="button"
+              onClick={onCancel}
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-border bg-card px-4 py-3.5 text-xs sm:text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors cursor-pointer"
+              aria-label="Cancel message generation"
+            >
+              <XCircle className="w-4 h-4" />
+              <span>Cancel</span>
+            </button>
           )}
-        </button>
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-foreground text-background px-8 py-3.5 text-sm sm:text-base font-bold tracking-tight shadow-card dark:shadow-card-dark transition-all duration-150 hover:bg-foreground/90 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
+          >
+            {isLoading ? (
+              <span className="flex items-center gap-2.5">
+                <Loader2 className="h-4 w-4 animate-spin shrink-0 text-brand" />
+                <span>{loadingMessages[loadingIndex]}</span>
+              </span>
+            ) : (
+              <>
+                <span>Generate Message</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </form>
   );

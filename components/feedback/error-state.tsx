@@ -7,20 +7,20 @@ interface ErrorStateProps {
 
 export function ErrorState({ error, onRetry }: ErrorStateProps) {
   return (
-    <div className="rounded-2xl border border-destructive/30 bg-destructive/[0.04] p-8 sm:p-12 flex flex-col items-center text-center animate-in fade-in duration-300">
-      <div className="w-12 h-12 rounded-xl bg-destructive/10 border border-destructive/20 flex items-center justify-center mb-5 text-destructive">
-        <AlertCircle className="w-6 h-6" />
+    <div className="rounded-2xl border border-destructive/20 bg-destructive/[0.03] p-8 sm:p-10 flex flex-col items-center text-center animate-in fade-in duration-300" role="alert">
+      <div className="w-10 h-10 rounded-xl bg-destructive/10 border border-destructive/20 flex items-center justify-center mb-4 text-destructive">
+        <AlertCircle className="w-5 h-5" />
       </div>
-      <h3 className="text-xl font-bold tracking-tight text-foreground mb-2">Generation Failed</h3>
-      <p className="text-sm sm:text-base text-muted-foreground mb-8 max-w-md mx-auto leading-relaxed">
+      <h3 className="text-lg font-bold tracking-tight text-foreground mb-2">Generation Failed</h3>
+      <p className="text-xs sm:text-sm text-muted-foreground mb-6 max-w-md mx-auto leading-relaxed">
         {error}
       </p>
       <button
         type="button"
         onClick={onRetry}
-        className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 text-sm font-bold shadow-sm transition-all hover:opacity-90 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 cursor-pointer"
+        className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-xs sm:text-sm font-bold shadow-subtle transition-all hover:bg-foreground/90 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer"
       >
-        <RotateCcw className="w-4 h-4" />
+        <RotateCcw className="w-3.5 h-3.5" />
         <span>Try Again</span>
       </button>
     </div>

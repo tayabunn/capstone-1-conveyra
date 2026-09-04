@@ -20,10 +20,22 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
+  /* Primary Brand (Conveyra Purple) */
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-brand-subtle: var(--brand-subtle);
   --color-brand-border: var(--brand-border);
+
+  /* Secondary Brand (Electric / Refined Blue) */
+  --color-electric: var(--electric);
+  --color-electric-foreground: var(--electric-foreground);
+  --color-electric-subtle: var(--electric-subtle);
+  --color-electric-border: var(--electric-border);
+
+  /* Expressive Supporting Accents */
+  --color-lavender: var(--lavender);
+  --color-lavender-foreground: var(--lavender-foreground);
+  --color-cyan-subtle: var(--cyan-subtle);
 
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -42,81 +54,103 @@
   --radius-2xl: calc(var(--radius) + 16px);
   
   --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
-  --shadow-card-dark: 0 8px 30px -4px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.07);
-  --shadow-elevated: 0 16px 40px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
-  --shadow-elevated-dark: 0 20px 48px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.09);
-  --shadow-brand-glow: 0 0 24px -4px rgba(124, 58, 237, 0.25);
-  --shadow-brand-glow-dark: 0 0 28px -4px rgba(139, 92, 246, 0.35);
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(15, 23, 42, 0.06);
+  --shadow-card-dark: 0 8px 32px -4px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow-elevated: 0 20px 40px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.06);
+  --shadow-elevated-dark: 0 24px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  --shadow-glow-brand: 0 0 30px -4px rgba(124, 58, 237, 0.22);
+  --shadow-glow-blue: 0 0 30px -4px rgba(37, 99, 235, 0.22);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 
   --card: #ffffff;
-  --card-foreground: #09090b;
+  --card-foreground: #0f172a;
 
-  --primary: #09090b;
+  --primary: #0f172a;
   --primary-foreground: #ffffff;
 
-  --secondary: #f4f4f6;
-  --secondary-foreground: #09090b;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
 
-  --muted: #ececed;
-  --muted-foreground: #646470;
+  --muted: #e2e8f0;
+  --muted-foreground: #475569;
 
-  --accent: #f4f4f6;
-  --accent-foreground: #09090b;
+  --accent: #f8fafc;
+  --accent-foreground: #0f172a;
 
-  /* Controlled Purple Accent */
+  /* Primary Brand - Deep Indigo / Purple */
   --brand: #6d28d9;
   --brand-foreground: #ffffff;
   --brand-subtle: #f5f3ff;
   --brand-border: #ddd6fe;
 
+  /* Secondary Brand - Electric Blue */
+  --electric: #2563eb;
+  --electric-foreground: #ffffff;
+  --electric-subtle: #eff6ff;
+  --electric-border: #bfdbfe;
+
+  /* Supporting Accents */
+  --lavender: #ede9fe;
+  --lavender-foreground: #5b21b6;
+  --cyan-subtle: #ecfeff;
+
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
 
-  --border: #e4e4e7;
-  --border-subtle: #f0f0f2;
-  --input: #e4e4e7;
+  --border: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --input: #e2e8f0;
   --ring: #6d28d9;
 
-  --radius: 0.75rem;
+  --radius: 0.875rem;
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #f4f4f6;
+  --background: #07090e;
+  --foreground: #f8fafc;
 
-  --card: #111115;
-  --card-foreground: #f4f4f6;
+  --card: #0d111a;
+  --card-foreground: #f8fafc;
 
-  --primary: #f4f4f6;
-  --primary-foreground: #09090b;
+  --primary: #f8fafc;
+  --primary-foreground: #07090e;
 
-  --secondary: #17171d;
-  --secondary-foreground: #f4f4f6;
+  --secondary: #131926;
+  --secondary-foreground: #f8fafc;
 
-  --muted: #202028;
-  --muted-foreground: #8f8f9d;
+  --muted: #1c2436;
+  --muted-foreground: #94a3b8;
 
-  --accent: #1c1c24;
-  --accent-foreground: #f4f4f6;
+  --accent: #151d2e;
+  --accent-foreground: #f8fafc;
 
-  /* Controlled Purple Accent */
+  /* Primary Brand - Vibrant Violet */
   --brand: #8b5cf6;
   --brand-foreground: #ffffff;
   --brand-subtle: rgba(139, 92, 246, 0.12);
-  --brand-border: rgba(139, 92, 246, 0.3);
+  --brand-border: rgba(139, 92, 246, 0.28);
+
+  /* Secondary Brand - Electric Sky Blue */
+  --electric: #38bdf8;
+  --electric-foreground: #07090e;
+  --electric-subtle: rgba(56, 189, 248, 0.12);
+  --electric-border: rgba(56, 189, 248, 0.28);
+
+  /* Supporting Accents */
+  --lavender: rgba(167, 139, 250, 0.14);
+  --lavender-foreground: #c4b5fd;
+  --cyan-subtle: rgba(6, 182, 212, 0.12);
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  --border: #23232b;
-  --border-subtle: #1a1a22;
-  --input: #262632;
+  --border: #1e293b;
+  --border-subtle: #131b2e;
+  --input: #1e293b;
   --ring: #8b5cf6;
 }
 
@@ -143,3 +177,55 @@
     }
   }
 }
+
+/* Atmospheric Subtle Grid */
+.bg-grid-subtle {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+}
+
+.dark .bg-grid-subtle {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Expressive Typography Gradient Utilities */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #9333ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-brand {
+  background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-blue {
+  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Accessibility: Support users with vestibular / motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -18,8 +18,8 @@ interface ToneSelectorProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 export const ToneSelector = forwardRef<HTMLFieldSetElement, ToneSelectorProps>(
   ({ value, onChange, error, className, disabled, ...props }, ref) => {
     return (
-      <fieldset className={cn("space-y-2.5", className)} ref={ref} aria-describedby={error ? "tone-error" : undefined}>
-        <legend className="text-sm font-semibold text-foreground tracking-tight mb-2.5">
+      <fieldset className={cn("space-y-2", className)} ref={ref} aria-describedby={error ? "tone-error" : undefined}>
+        <legend className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">
           Select Tone <span className="text-destructive" aria-hidden="true">*</span>
         </legend>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -31,10 +31,10 @@ export const ToneSelector = forwardRef<HTMLFieldSetElement, ToneSelectorProps>(
                 key={tone.value}
                 htmlFor={inputId}
                 className={cn(
-                  "group relative flex flex-col p-4 rounded-xl border transition-all duration-150 select-none cursor-pointer focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2",
+                  "group relative flex flex-col p-3.5 rounded-xl border transition-all duration-150 select-none cursor-pointer focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
                   isSelected
-                    ? "border-foreground bg-foreground text-background shadow-subtle"
-                    : "border-border/70 bg-card text-foreground hover:border-foreground/40 hover:bg-secondary/40",
+                    ? "border-brand bg-brand-subtle text-foreground shadow-subtle dark:border-brand/60"
+                    : "border-border bg-card text-foreground hover:border-foreground/30 hover:bg-secondary/40",
                   disabled && "opacity-50 pointer-events-none cursor-not-allowed",
                   error && "border-destructive focus-within:ring-destructive"
                 )}
@@ -48,20 +48,21 @@ export const ToneSelector = forwardRef<HTMLFieldSetElement, ToneSelectorProps>(
                   onChange={() => onChange?.(tone.value)}
                   disabled={disabled}
                   className="sr-only"
-                  aria-invalid={!!error}
                   {...props}
                 />
                 <div className="flex items-center justify-between">
-                  <span className={cn("text-sm font-bold tracking-tight", isSelected ? "text-background" : "text-foreground")}>
+                  <span className={cn("text-xs font-bold tracking-tight", isSelected ? "text-brand dark:text-foreground" : "text-foreground")}>
                     {tone.label}
                   </span>
                   {isSelected ? (
-                    <Check className="w-3.5 h-3.5 text-background stroke-[2.5]" aria-hidden="true" />
+                    <div className="w-4 h-4 rounded-full bg-brand text-brand-foreground flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" aria-hidden="true" />
+                    </div>
                   ) : (
-                    <div className="w-3.5 h-3.5 rounded-full border border-border/80 group-hover:border-foreground/40" />
+                    <div className="w-3.5 h-3.5 rounded-full border border-border group-hover:border-foreground/40" />
                   )}
                 </div>
-                <span className={cn("mt-1 block text-xs leading-normal", isSelected ? "text-background/80" : "text-muted-foreground")}>
+                <span className={cn("mt-1 block text-[11px] leading-normal", isSelected ? "text-foreground/80 dark:text-muted-foreground" : "text-muted-foreground")}>
                   {tone.description}
                 </span>
               </label>

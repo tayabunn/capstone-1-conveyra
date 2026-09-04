@@ -2,18 +2,29 @@ import { ConveyraLogo } from "./conveyra-logo";
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border/50 bg-secondary/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex flex-col items-center md:items-start gap-1.5">
+    <footer className="w-full border-t border-border bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-12 flex flex-col sm:flex-row justify-between items-center gap-6">
+        <div className="flex flex-col items-center sm:items-start gap-1">
           <ConveyraLogo />
-          <p className="text-xs text-muted-foreground">
-            Precision AI communication assistant for delicate conversations.
+          <p className="text-xs text-muted-foreground mt-1">
+            Communication assistant for high-stakes conversations.
           </p>
         </div>
+
         <div className="flex items-center gap-6 text-xs text-muted-foreground font-mono">
-          <span>&copy; {new Date().getFullYear()} Conveyra</span>
+          <a href="#generator" className="hover:text-foreground transition-colors">
+            Workspace
+          </a>
           <span>·</span>
-          <span>copyright reserved by Conveyra</span>
+          <a href="#how-it-works" className="hover:text-foreground transition-colors">
+            Method
+          </a>
+          <span>·</span>
+          <a href="#use-cases" className="hover:text-foreground transition-colors">
+            Use Cases
+          </a>
+          <span>·</span>
+          <span>&copy; {new Date().getFullYear()} Conveyra</span>
         </div>
       </div>
     </footer>

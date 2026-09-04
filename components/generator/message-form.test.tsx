@@ -60,4 +60,34 @@ describe('MessageForm', () => {
     expect(screen.getByLabelText(/describe what you want to say/i)).toBeDisabled();
     expect(screen.getByLabelText(/who are you writing to\?/i)).toBeDisabled();
   });
+
+  it('allows adding and editing an optional rough draft', async () => {
+    const handleSubmit = vi.fn();
+    render(<MessageForm onSubmit={handleSubmit} />);
+
+    const toggleDraftBtn = screen.getByRole('button', { name: /add rough draft/i });
+    expect(toggleDraftBtn).toBeInTheDocument();
+
+    fireEvent.click(toggleDraftBtn);
+
+    const draftTextarea = await screen.findByPlaceholderText(/paste any rough email/i);
+    expect(draftTextarea).toBeInTheDocument();
+
+    fireEvent.change(draftTextarea, {
+      target: { value: 'Rough draft text notes.' },
+    });
+
+    expect(draftTextarea).toHaveValue('Rough draft text notes.');
+  });
+
+  it('renders and invokes onCancel callback during loading state', () => {
+    const handleCancel = vi.fn();
+    render(<MessageForm onSubmit={vi.fn()} onCancel={handleCancel} isLoading={true} />);
+
+    const cancelBtn = screen.getByRole('button', { name: /cancel message generation/i });
+    expect(cancelBtn).toBeInTheDocument();
+
+    fireEvent.click(cancelBtn);
+    expect(handleCancel).toHaveBeenCalledTimes(1);
+  });
 });
