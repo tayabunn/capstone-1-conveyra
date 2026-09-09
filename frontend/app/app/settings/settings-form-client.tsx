@@ -5,15 +5,10 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Check, Loader2, Save, User, Sliders, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+import type { AppUser } from "@/lib/auth/session";
+
 interface SettingsFormClientProps {
-  initialUser?: {
-    id: string;
-    email: string;
-    name?: string;
-    defaultTone?: string;
-    defaultLength?: string;
-    defaultChannel?: string;
-  } | null;
+  initialUser?: AppUser | null;
 }
 
 export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {

@@ -9,6 +9,8 @@ import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 import { Loader2, ArrowRight, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { createClient } from "@/lib/supabase/client";
+
 function SignInFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -26,22 +28,31 @@ function SignInFormContent() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      const supabase = createClient();
+      const { error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
       });
 
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || "Invalid email or password.");
+      if (authError) {
+        // Fallback to custom backend API if Supabase cloud has custom auth setup
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const resData = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(authError.message || resData.error || "Invalid email or password.");
+        }
       }
 
       router.push(redirectPath);
       router.refresh();
     } catch (err: unknown) {
       const e = err as Error;
-      setError(e.message || "Failed to sign in.");
+      setError(e.message || "Failed to sign in. Please check your credentials.");
       setIsLoading(false);
     }
   };

@@ -9,6 +9,8 @@ import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 import { Loader2, ArrowRight, AlertCircle, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { createClient } from "@/lib/supabase/client";
+
 export default function SignUpPage() {
   const router = useRouter();
 
@@ -24,15 +26,29 @@ export default function SignUpPage() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+      const supabase = createClient();
+      const { error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            name,
+          },
+        },
       });
 
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to create account.");
+      if (signUpError) {
+        // Fallback to API route if needed
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const resData = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(signUpError.message || resData.error || "Failed to create account.");
+        }
       }
 
       router.push("/app");
