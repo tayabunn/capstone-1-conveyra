@@ -1,0 +1,60 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String    @id @default(uuid())
+  email           String    @unique
+  passwordHash    String
+  name            String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // Default communication preferences
+  defaultTone     String?   @default("professional")
+  defaultLength   String?   @default("medium")
+  defaultChannel  String?   @default("email")
+
+  // Relations
+  messages        Message[]
+
+  @@map("users")
+}
+
+model Message {
+  id                String    @id @default(uuid())
+  userId            String
+  
+  // Inputs
+  originalThought   String    @db.Text
+  recipient         String
+  communicationGoal String    @default("Request action")
+  channel           String    @default("Email")
+  tone              String
+  length            String
+  roughDraft        String?   @db.Text
+  
+  // AI Outputs
+  generatedMessage  String    @db.Text
+  rationale         String    @db.Text
+  alternative       String    @db.Text
+  contextAnalysis   Json?     // Structured signals: sensitivity, formality, urgency, risks, recommended focus
+  
+  // State
+  isFavorite        Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  // Relations & Constraints
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([userId, isFavorite])
+  @@map("messages")
+}
