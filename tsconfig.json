@@ -32,6 +32,9 @@
   ],
   "exclude": [
     "node_modules",
+    "frontend/**",
+    "backend/**",
+    "reference-site/**",
     "**/*.test.ts",
     "**/*.test.tsx",
     "tests/**",
