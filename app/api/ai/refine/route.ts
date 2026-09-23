@@ -1,22 +1,12 @@
 import { NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
 import { refineMessageSchema, refineMessageResponseSchema } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rate-limiter";
+import { generateStructuredOutput } from "@/lib/ai/llm";
 
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "AI service configuration missing." },
-        { status: 500 }
-      );
-    }
-
-    const ai = new GoogleGenAI({ apiKey });
-
     // Rate Limiting
     const clientIp =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -90,26 +80,21 @@ Respond ONLY with valid JSON matching:
     const timeoutAbort = new AbortController();
     const timeoutId = setTimeout(() => timeoutAbort.abort(), 20_000);
 
-    let response;
+    let parsedJson: { refinedMessage: string; refinementRationale: string };
     try {
-      response = await ai.models.generateContent({
-        model: "gemini-3.6-flash",
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json",
-          temperature: 0.6,
-        },
+      const result = await generateStructuredOutput<{
+        refinedMessage: string;
+        refinementRationale: string;
+      }>({
+        prompt,
+        temperature: 0.6,
+        abortSignal: timeoutAbort.signal,
       });
+      parsedJson = result.data;
     } finally {
       clearTimeout(timeoutId);
     }
 
-    const outputText = response?.text;
-    if (!outputText) {
-      throw new Error("No response received from model.");
-    }
-
-    const parsedJson = JSON.parse(outputText);
     const validated = refineMessageResponseSchema.safeParse(parsedJson);
     if (!validated.success) {
       return NextResponse.json(
@@ -117,6 +102,7 @@ Respond ONLY with valid JSON matching:
         { status: 502 }
       );
     }
+
 
     return NextResponse.json(validated.data);
   } catch (error: unknown) {

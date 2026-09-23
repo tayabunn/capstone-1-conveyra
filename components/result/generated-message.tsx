@@ -72,12 +72,18 @@ export function GeneratedMessage({
             </h2>
           </div>
           <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+            {data.provider && (
+              <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-secondary text-[11px] font-semibold text-foreground border border-border/60">
+                {data.provider}
+              </span>
+            )}
             <span className="badge-dot" />
             <span>{isRefined ? "Refined & ready" : "Ready to send"}</span>
           </div>
         </div>
 
         <div className="relative rounded-3xl border border-border/80 bg-background/90 dark:bg-zinc-900/70 p-6 sm:p-8 shadow-card dark:shadow-card-dark transition-all card-glass-glow">
+
           <p className="whitespace-pre-wrap text-foreground font-normal text-base sm:text-xl leading-relaxed tracking-[-0.01em]">
             {currentMessageText}
           </p>

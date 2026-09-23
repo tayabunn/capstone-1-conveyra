@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
 import {
   generateMessageSchema,
   generateMessageResponseSchema,
@@ -9,6 +8,7 @@ import { executeCommunicationContext } from "@/lib/ai/tools/analyze-communicatio
 import { checkRateLimit } from "@/lib/rate-limiter";
 import { getCurrentUser } from "@/lib/auth/session";
 import { createMessage } from "@/lib/db";
+import { generateStructuredOutput } from "@/lib/ai/llm";
 
 /**
  * Configure max execution duration for Next.js Route Handler on Vercel (30 seconds)
@@ -20,19 +20,7 @@ const MAX_PAYLOAD_BYTES = 32 * 1024;
 
 export async function POST(req: Request) {
   try {
-    // 1. Ensure API key is configured on server
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      console.error("GEMINI_API_KEY is not configured.");
-      return NextResponse.json(
-        { error: "Internal server configuration error. Please try again later." },
-        { status: 500 }
-      );
-    }
-
-    const ai = new GoogleGenAI({ apiKey });
-
-    // 2. Client IP extraction & Rate Limiting Abuse Protection (10 req / min)
+    // 1. Client IP extraction & Rate Limiting Abuse Protection (10 req / min)
     const clientIp =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       req.headers.get("x-real-ip") ||
@@ -54,7 +42,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 3. Payload size check
+    // 2. Payload size check
     const contentLength = req.headers.get("content-length");
     if (contentLength && parseInt(contentLength, 10) > MAX_PAYLOAD_BYTES) {
       return NextResponse.json(
@@ -63,7 +51,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 4. Parse and validate the incoming request payload
+    // 3. Parse and validate the incoming request payload
     let body;
     try {
       body = await req.json();
@@ -79,9 +67,18 @@ export async function POST(req: Request) {
       );
     }
 
-    const { context, recipient, goal = "request_action", channel = "email", tone, length, draft } = parseResult.data;
+    const {
+      context,
+      recipient,
+      goal = "request_action",
+      channel = "email",
+      tone,
+      length,
+      provider = "auto",
+      draft,
+    } = parseResult.data;
 
-    // 5. Execute Server-Side AI Tool: analyzeCommunicationContext
+    // 4. Execute Server-Side AI Tool: analyzeCommunicationContext
     let contextAnalysis: CommunicationContextOutput | undefined;
     try {
       contextAnalysis = await executeCommunicationContext({
@@ -98,7 +95,7 @@ export async function POST(req: Request) {
       contextAnalysis = undefined;
     }
 
-    // 6. Channel specific guidance
+    // 5. Channel specific guidance
     let channelGuidance = "";
     if (channel === "email") {
       channelGuidance = "FORMAT AS EMAIL: Include a Subject line if helpful (e.g. 'Subject: ...'), appropriate opening greeting, structured paragraphs, and clear sign-off.";
@@ -110,7 +107,7 @@ export async function POST(req: Request) {
       channelGuidance = "FORMAT FOR LINKEDIN: Professional, concise, warm networking tone.";
     }
 
-    // 7. Construct Prompt with Structured Communication Signals
+    // 6. Construct Prompt with Structured Communication Signals
     const prompt = `
 You are Conveyra, an expert communication assistant. Your goal is to help the user say what they mean in the right way, adapting perfectly to the situation.
 
@@ -159,42 +156,30 @@ Respond ONLY with a valid JSON object matching this schema:
 }
 `;
 
-    // 8. Call LLM with tool-informed context (with 25s internal abort timeout)
+    // 7. Call Multi-Provider Resilient LLM Engine (with 25s internal timeout)
     const timeoutAbort = new AbortController();
     const timeoutId = setTimeout(() => timeoutAbort.abort(), 25_000);
 
-    let response;
+    let aiJson: { message: string; approach: string; alternative: string };
+    let usedProvider = "AI Provider";
     try {
-      response = await ai.models.generateContent({
-        model: "gemini-3.6-flash",
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json",
-          temperature: 0.7,
-        },
+      const result = await generateStructuredOutput<{
+        message: string;
+        approach: string;
+        alternative: string;
+      }>({
+        prompt,
+        temperature: 0.7,
+        abortSignal: timeoutAbort.signal,
+        preferredProvider: provider,
       });
+      aiJson = result.data;
+      usedProvider = result.provider;
     } finally {
       clearTimeout(timeoutId);
     }
 
-    const aiOutputText = response?.text;
-    if (!aiOutputText) {
-      throw new Error("No text returned from Gemini API");
-    }
-
-    // 9. Parse and validate AI output
-    let aiJson;
-    try {
-      aiJson = JSON.parse(aiOutputText);
-    } catch {
-      console.error("Failed to parse Gemini output as JSON", aiOutputText);
-      return NextResponse.json(
-        { error: "We received a malformed response from our provider. Please try again." },
-        { status: 502 }
-      );
-    }
-
-    // 10. Auto-persist to user account if authenticated (with graceful fallback)
+    // 8. Auto-persist to user account if authenticated (with graceful fallback)
     let savedId: string | undefined;
     try {
       const user = await getCurrentUser();
@@ -224,7 +209,9 @@ Respond ONLY with a valid JSON object matching this schema:
       ...aiJson,
       contextAnalysis,
       savedId,
+      provider: usedProvider,
     });
+
 
     if (!finalOutput.success) {
       console.error("AI output did not match required schema", finalOutput.error);

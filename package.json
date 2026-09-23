@@ -10,14 +10,17 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "postinstall": "prisma skills sync || exit 0"
   },
   "dependencies": {
     "@google/genai": "^2.19.0",
+    "@prisma/client": "^7.10.0",
     "@radix-ui/react-dialog": "^1.1.23",
     "@radix-ui/react-tabs": "^1.1.21",
+    "@supabase/server": "^1.8.0",
     "@supabase/ssr": "^0.12.7",
-    "@supabase/supabase-js": "^2.116.0",
+    "@supabase/supabase-js": "^2.117.0",
     "ai": "^7.0.92",
     "clsx": "^2.1.1",
     "lucide-react": "^1.35.0",
@@ -44,6 +47,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
     "jsdom": "^29.1.1",
+    "prisma": "^8.0.0-rc.15",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.11"

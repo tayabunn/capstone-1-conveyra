@@ -9,6 +9,7 @@ import { GoalSelector } from "./goal-selector";
 import { ChannelSelector } from "./channel-selector";
 import { ToneSelector } from "./tone-selector";
 import { LengthSelector } from "./length-selector";
+import { ProviderSelector } from "./provider-selector";
 import { cn } from "@/lib/utils";
 
 interface MessageFormProps {
@@ -36,6 +37,7 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
       channel: "email",
       tone: undefined,
       length: undefined,
+      provider: "auto",
       draft: "",
     }
   );
@@ -229,22 +231,45 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
         </div>
       </div>
 
-      {/* 06 — LENGTH */}
-      <div className="pt-6 border-t border-border/70 space-y-2">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="font-mono text-[10px] font-bold tracking-widest text-foreground uppercase px-3 py-1 rounded-full bg-secondary border border-border">
-            06 — Length
-          </span>
+      {/* 06 — LENGTH & 07 — AI ENGINE */}
+      <div className="space-y-6 pt-6 border-t border-border/70">
+        {/* Step 06: Length */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="font-mono text-[10px] font-bold tracking-widest text-foreground uppercase px-3 py-1 rounded-full bg-secondary border border-border">
+              06 — Length
+            </span>
+          </div>
+          <LengthSelector
+            value={formData.length}
+            onChange={(val) => {
+              setFormData({ ...formData, length: val as GenerateMessageInput["length"] });
+              if (errors.length) setErrors({ ...errors, length: "" });
+            }}
+            error={errors.length}
+            disabled={isLoading}
+          />
         </div>
-        <LengthSelector
-          value={formData.length}
-          onChange={(val) => {
-            setFormData({ ...formData, length: val as GenerateMessageInput["length"] });
-            if (errors.length) setErrors({ ...errors, length: "" });
-          }}
-          error={errors.length}
-          disabled={isLoading}
-        />
+
+        {/* Step 07: AI Engine / Provider */}
+        <div className="space-y-2 pt-4">
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full bg-brand-subtle border border-brand-border">
+                07 — AI Engine
+              </span>
+              <span className="text-xs font-semibold text-foreground">Select Model Provider</span>
+            </div>
+            <span className="text-[11px] text-muted-foreground">Free high-speed multi-provider</span>
+          </div>
+          <ProviderSelector
+            value={formData.provider || "auto"}
+            onChange={(val) => {
+              setFormData({ ...formData, provider: val });
+            }}
+            disabled={isLoading}
+          />
+        </div>
       </div>
 
       {/* OPTIONAL ROUGH DRAFT */}
@@ -301,7 +326,19 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
       <div className="pt-6 border-t border-border/70 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <Sparkles className="w-3.5 h-3.5 text-brand" />
-          <span>Calibrated generation via Gemini 3.6</span>
+          <span>
+            {formData.provider === "groq"
+              ? "⚡ Ultra-Fast Generation via Groq (Llama 3.3)"
+              : formData.provider === "cerebras"
+              ? "🚀 High-Velocity Generation via Cerebras (~2,000 tok/s)"
+              : formData.provider === "openrouter"
+              ? "🌐 Multi-Model Generation via OpenRouter"
+              : formData.provider === "github"
+              ? "🐙 Generation via GitHub Models (GPT-4o mini)"
+              : formData.provider === "gemini"
+              ? "✨ Precision Generation via Gemini 2.5 Flash"
+              : "🛡️ Resilient Failover Mode (Gemini ➔ Groq ➔ Cerebras)"}
+          </span>
         </div>
 
         <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -339,3 +376,4 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
     </form>
   );
 }
+

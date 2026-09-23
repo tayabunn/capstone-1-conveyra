@@ -35,6 +35,17 @@ export const refinementOptions = [
 
 export type RefinementOption = (typeof refinementOptions)[number];
 
+export const modelProviderOptions = [
+  "auto",
+  "gemini",
+  "groq",
+  "cerebras",
+  "openrouter",
+  "github",
+] as const;
+
+export type ModelProviderOption = (typeof modelProviderOptions)[number];
+
 /**
  * Canonical generator input schema
  */
@@ -70,6 +81,10 @@ export const generateMessageSchema = z.object({
   length: z.enum(["short", "medium", "detailed"], {
     message: "Please select a valid length.",
   }),
+  provider: z
+    .enum(modelProviderOptions)
+    .default("auto")
+    .optional(),
   draft: z
     .string()
     .max(2000, "Please keep your draft under 2,000 characters.")
@@ -155,7 +170,9 @@ export const generateMessageResponseSchema = z.object({
   alternative: z.string().min(1),
   contextAnalysis: communicationContextOutputSchema.optional(),
   savedId: z.string().optional(),
+  provider: z.string().optional(),
 });
+
 
 export type GenerateMessageResponse = z.infer<typeof generateMessageResponseSchema>;
 
