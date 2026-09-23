@@ -49,3 +49,5 @@ next-env.d.ts
 frontend/next-env.d.ts
 
 .vercel
+# Playwright CLI output (may contain credentials)
+.playwright-cli/

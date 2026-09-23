@@ -27,7 +27,7 @@ export default async function AppLayout({
         <AppHeader user={user} />
         
         <main className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <div className="max-w-5xl mx-auto w-full">
+          <div className="w-[90%] max-w-[90%] mx-auto">
             {children}
           </div>
         </main>

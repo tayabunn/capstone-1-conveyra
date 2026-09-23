@@ -3,7 +3,7 @@ import { ConveyraLogo } from "./conveyra-logo";
 export function Footer() {
   return (
     <footer className="w-full border-t border-border/80 bg-background/90 backdrop-blur-md">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-12 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div className="w-[90%] max-w-[90%] mx-auto py-12 flex flex-col sm:flex-row justify-between items-center gap-6">
         <div className="flex flex-col items-center sm:items-start gap-1.5">
           <ConveyraLogo />
           <p className="text-xs text-muted-foreground mt-1">

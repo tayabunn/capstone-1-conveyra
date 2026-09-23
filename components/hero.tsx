@@ -3,21 +3,21 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center pt-12 sm:pt-20 pb-10 md:pb-14 bg-radial-ambient">
+    <section className="relative w-[90%] max-w-[90%] mx-auto text-center pt-12 sm:pt-20 pb-10 md:pb-14 bg-radial-ambient">
       {/* Eyebrow badge with glowing pulse dot */}
-      <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-secondary/80 text-foreground border border-border/80 shadow-subtle mb-6 backdrop-blur-md">
+      <div className="badge-shiny mb-6">
         <span className="badge-dot" />
-        <span className="font-mono text-[11px] tracking-wider uppercase text-muted-foreground">
+        <span className="font-mono text-[11px] tracking-wider uppercase">
           AI Communication Copilot v2.0
         </span>
       </div>
       
-      {/* Editorial Headline with selective gradient */}
+      {/* Editorial Headline with selective shiny gradient */}
       <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[1.06] mb-6 text-balance max-w-5xl mx-auto">
         Say what you mean.<br className="hidden sm:inline" />
         <span className="block sm:inline sm:ml-3 text-muted-foreground font-medium">
           Without wondering{" "}
-          <span className="text-gradient-brand font-bold">how to say it</span>
+          <span className="text-gradient-shiny font-extrabold drop-shadow-sm">how to say it</span>
         </span>
       </h1>
       
@@ -46,7 +46,7 @@ export function Hero() {
       </div>
 
       {/* Floating Product Transformation Visual Cue */}
-      <div className="relative max-w-3xl mx-auto rounded-3xl border border-border/80 bg-card/90 backdrop-blur-xl p-5 sm:p-6 shadow-elevated dark:shadow-elevated-dark text-left transition-all card-glass-glow">
+      <div className="relative max-w-3xl mx-auto rounded-3xl p-5 sm:p-6 text-left transition-all card-luminous-tactile">
         <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-border/70 text-xs">
           <div className="flex items-center gap-2.5">
             <span className="badge-dot" />
@@ -55,13 +55,13 @@ export function Hero() {
             </span>
           </div>
           <div className="flex flex-wrap items-center gap-2 font-mono text-[10px]">
-            <span className="px-2.5 py-1 rounded-full bg-electric-subtle text-electric border border-electric-border font-semibold">
+            <span className="chip-tactile px-3 py-1 rounded-full text-electric font-semibold">
               Recipient: Client
             </span>
-            <span className="px-2.5 py-1 rounded-full bg-brand-subtle text-brand border border-brand-border font-semibold">
+            <span className="chip-tactile px-3 py-1 rounded-full text-brand font-semibold">
               Tone: Professional
             </span>
-            <span className="px-2.5 py-1 rounded-full bg-secondary text-muted-foreground border border-border font-semibold">
+            <span className="chip-tactile px-3 py-1 rounded-full text-muted-foreground font-semibold">
               Channel: Email
             </span>
           </div>

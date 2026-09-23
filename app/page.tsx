@@ -25,7 +25,7 @@ export default function Home() {
         <Hero />
 
         {/* 3. Interactive Product Demo Preview */}
-        <section id="demo" className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl w-full relative z-10 pb-16 sm:pb-24">
+        <section id="demo" className="w-[90%] max-w-[90%] mx-auto relative z-10 pb-16 sm:pb-24">
           <div className="text-center mb-6 space-y-1">
             <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-2.5 py-1 rounded-md bg-brand-subtle border border-brand-border">
               Interactive Calibration Preview

@@ -4,9 +4,9 @@ import Link from "next/link";
 export function FinalCta() {
   return (
     <section className="py-20 sm:py-28 border-t border-border/80 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-        <div className="relative rounded-3xl border border-border/80 bg-card p-10 sm:p-14 shadow-elevated dark:shadow-elevated-dark overflow-hidden card-glass-glow bg-radial-ambient">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide bg-secondary/80 text-foreground border border-border/80 shadow-sm mb-6">
+      <div className="w-[90%] max-w-[90%] mx-auto text-center">
+        <div className="relative rounded-3xl p-10 sm:p-14 overflow-hidden card-luminous-tactile bg-radial-ambient">
+          <div className="badge-shiny mb-6">
             <span className="badge-dot" />
             Instant Calibration
           </div>
@@ -19,7 +19,7 @@ export function FinalCta() {
           </p>
           <Link
             href="/app"
-            className="btn-tactile btn-tactile-brand animate-shine px-8 py-4 text-sm sm:text-base font-bold shadow-elevated dark:shadow-elevated-dark"
+            className="btn-tactile btn-tactile-brand animate-shine px-8 py-4 text-sm sm:text-base font-bold shadow-elevated dark:shadow-elevated-dark inline-flex items-center gap-2"
           >
             <Sparkles className="w-4 h-4 text-lavender" />
             <span>Start Calibrating with Conveyra</span>

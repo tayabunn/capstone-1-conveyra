@@ -84,7 +84,7 @@ export function HistoryListClient({
 
   if (messages.length === 0) {
     return (
-      <div className="rounded-2xl border border-border bg-card/60 p-12 text-center space-y-4 shadow-subtle max-w-lg mx-auto">
+      <div className="rounded-2xl border border-border bg-card/60 p-12 text-center space-y-4 max-w-lg mx-auto">
         <div className="w-12 h-12 rounded-2xl bg-secondary border border-border flex items-center justify-center mx-auto text-muted-foreground">
           {onlyFavoritesMode ? <Bookmark className="w-6 h-6 text-brand" /> : <Sparkles className="w-6 h-6 text-electric" />}
         </div>
@@ -150,7 +150,7 @@ export function HistoryListClient({
         {filtered.map((item) => (
           <div
             key={item.id}
-            className="group relative bg-card/95 border border-border/90 rounded-2xl p-5 sm:p-6 shadow-subtle hover:shadow-card dark:hover:shadow-card-dark transition-all duration-200 flex flex-col justify-between space-y-4"
+            className="group relative bg-card/95 border border-border/90 rounded-2xl p-5 sm:p-6 transition-all duration-200 flex flex-col justify-between space-y-4"
           >
             {/* Top Meta Chips */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/60 pb-3">

@@ -3,9 +3,9 @@ import { Briefcase, Building2, MessageSquare, Users } from "lucide-react";
 export function UseCaseBento() {
   return (
     <section id="use-cases" className="py-20 sm:py-28 border-t border-border/80 bg-background relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div className="w-[90%] max-w-[90%] mx-auto">
         <div className="max-w-2xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide bg-secondary/80 text-foreground border border-border/80 shadow-sm mb-4">
+          <div className="badge-shiny mb-4">
             <span className="badge-dot" />
             Context Dynamics
           </div>
@@ -20,18 +20,18 @@ export function UseCaseBento() {
         {/* Asymmetric Bento Grid with distinct accent motifs */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
           {/* Card 1: Clients (7 cols) */}
-          <div className="md:col-span-7 rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between shadow-subtle hover:shadow-card hover:border-electric/40 hover:-translate-y-1 transition-all duration-200 card-glass-glow group">
+          <div className="md:col-span-7 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-2xl bg-electric-subtle text-electric flex items-center justify-center border border-electric-border">
+                  <div className="w-10 h-10 rounded-2xl bg-electric-subtle text-electric flex items-center justify-center border border-electric-border shadow-sm">
                     <Briefcase className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
                     Clients
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-electric font-semibold px-3 py-1 rounded-full bg-electric-subtle border border-electric-border">
+                <span className="chip-tactile text-[11px] font-mono text-electric font-semibold px-3 py-1 rounded-full">
                   Professional Diplomacy
                 </span>
               </div>
@@ -52,18 +52,18 @@ export function UseCaseBento() {
           </div>
 
           {/* Card 2: Work (5 cols) */}
-          <div className="md:col-span-5 rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between shadow-subtle hover:shadow-card hover:border-brand/40 hover:-translate-y-1 transition-all duration-200 card-glass-glow group">
+          <div className="md:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-2xl bg-brand-subtle text-brand flex items-center justify-center border border-brand-border">
+                  <div className="w-10 h-10 rounded-2xl bg-brand-subtle text-brand flex items-center justify-center border border-brand-border shadow-sm">
                     <Building2 className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
                     Work
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-brand font-semibold px-3 py-1 rounded-full bg-brand-subtle border border-brand-border">
+                <span className="chip-tactile text-[11px] font-mono text-brand font-semibold px-3 py-1 rounded-full">
                   Internal Alignment
                 </span>
               </div>
@@ -82,18 +82,18 @@ export function UseCaseBento() {
           </div>
 
           {/* Card 3: Feedback (5 cols) */}
-          <div className="md:col-span-5 rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between shadow-subtle hover:shadow-card hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-200 card-glass-glow group">
+          <div className="md:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-2xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+                  <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center border border-emerald-500/20 shadow-sm">
                     <MessageSquare className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
                     Feedback
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-semibold px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                <span className="chip-tactile text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-semibold px-3 py-1 rounded-full">
                   Constructive Critique
                 </span>
               </div>
@@ -112,18 +112,18 @@ export function UseCaseBento() {
           </div>
 
           {/* Card 4: Personal (7 cols) */}
-          <div className="md:col-span-7 rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between shadow-subtle hover:shadow-card hover:border-violet-500/40 hover:-translate-y-1 transition-all duration-200 card-glass-glow group">
+          <div className="md:col-span-7 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-2xl bg-lavender text-lavender-foreground flex items-center justify-center border border-brand-border/40">
+                  <div className="w-10 h-10 rounded-2xl bg-lavender text-lavender-foreground flex items-center justify-center border border-brand-border/40 shadow-sm">
                     <Users className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
                     Personal
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-lavender-foreground font-semibold px-3 py-1 rounded-full bg-lavender border border-brand-border/40">
+                <span className="chip-tactile text-[11px] font-mono text-lavender-foreground font-semibold px-3 py-1 rounded-full">
                   Human Boundaries
                 </span>
               </div>

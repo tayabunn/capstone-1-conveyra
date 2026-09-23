@@ -3,9 +3,9 @@ import { Check } from "lucide-react";
 export function TransformationSection() {
   return (
     <section className="py-20 sm:py-28 border-t border-border/80 bg-background relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div className="w-[90%] max-w-[90%] mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide bg-secondary/80 text-foreground border border-border/80 shadow-sm mb-4">
+          <div className="badge-shiny mb-4">
             <span className="badge-dot" />
             Transformation
           </div>
@@ -20,15 +20,15 @@ export function TransformationSection() {
         {/* Asymmetric Editorial Transformation Demonstration */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Left: Raw Thought Input */}
-          <div className="lg:col-span-5 rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between shadow-subtle hover:border-electric/40 transition-all card-glass-glow">
+          <div className="lg:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-[10px] font-bold tracking-widest text-electric uppercase px-3 py-1 rounded-full bg-electric-subtle border border-electric-border">
+                <span className="chip-tactile font-mono text-[10px] font-bold tracking-widest text-electric uppercase px-3 py-1 rounded-full">
                   01 — Raw Thought
                 </span>
                 <span className="text-xs text-muted-foreground font-mono">Unfiltered</span>
               </div>
-              <div className="rounded-2xl border border-border/80 bg-secondary/40 p-5">
+              <div className="rounded-2xl border border-border/80 bg-secondary/40 p-5 shadow-inner">
                 <p className="text-foreground/90 font-normal text-sm sm:text-base leading-relaxed italic">
                   &ldquo;I don&apos;t want to do another round of revisions for free, but I don&apos;t want to sound difficult.&rdquo;
                 </p>
@@ -41,13 +41,13 @@ export function TransformationSection() {
                 Applied Context
               </span>
               <div className="flex flex-wrap gap-2 font-mono text-[11px]">
-                <span className="px-3 py-1 rounded-full bg-electric-subtle text-electric border border-electric-border font-semibold">
+                <span className="chip-tactile px-3 py-1 rounded-full text-electric font-semibold">
                   Recipient: Client
                 </span>
-                <span className="px-3 py-1 rounded-full bg-brand-subtle text-brand border border-brand-border font-semibold">
+                <span className="chip-tactile px-3 py-1 rounded-full text-brand font-semibold">
                   Tone: Professional
                 </span>
-                <span className="px-3 py-1 rounded-full bg-lavender text-lavender-foreground border border-brand-border/40 font-semibold">
+                <span className="chip-tactile px-3 py-1 rounded-full text-lavender-foreground font-semibold">
                   Length: Medium
                 </span>
               </div>
@@ -55,11 +55,11 @@ export function TransformationSection() {
           </div>
 
           {/* Right: Conveyra Calibrated Result */}
-          <div className="lg:col-span-7 rounded-3xl border border-brand/30 dark:border-brand/40 bg-card p-6 sm:p-8 flex flex-col justify-between shadow-elevated dark:shadow-elevated-dark relative overflow-hidden card-glass-glow">
+          <div className="lg:col-span-7 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile relative overflow-hidden group">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric via-brand to-electric" />
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full bg-brand-subtle border border-brand/30 flex items-center gap-1.5 font-semibold">
+                <span className="chip-tactile font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
                   <Check className="w-3 h-3 stroke-[3]" />
                   02 — Conveyra Message
                 </span>

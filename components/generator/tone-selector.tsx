@@ -33,8 +33,8 @@ export const ToneSelector = forwardRef<HTMLFieldSetElement, ToneSelectorProps>(
                 className={cn(
                   "group relative flex flex-col p-3.5 rounded-xl border transition-all duration-150 select-none cursor-pointer focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
                   isSelected
-                    ? "border-brand bg-brand-subtle text-foreground shadow-subtle dark:border-brand/60"
-                    : "border-border bg-card text-foreground hover:border-foreground/30 hover:bg-secondary/40",
+                    ? "chip-tactile-active text-white"
+                    : "chip-tactile hover:text-foreground",
                   disabled && "opacity-50 pointer-events-none cursor-not-allowed",
                   error && "border-destructive focus-within:ring-destructive"
                 )}
@@ -51,18 +51,18 @@ export const ToneSelector = forwardRef<HTMLFieldSetElement, ToneSelectorProps>(
                   {...props}
                 />
                 <div className="flex items-center justify-between">
-                  <span className={cn("text-xs font-bold tracking-tight", isSelected ? "text-brand dark:text-foreground" : "text-foreground")}>
+                  <span className={cn("text-xs font-bold tracking-tight", isSelected ? "text-white" : "text-foreground")}>
                     {tone.label}
                   </span>
                   {isSelected ? (
-                    <div className="w-4 h-4 rounded-full bg-brand text-brand-foreground flex items-center justify-center">
+                    <div className="w-4 h-4 rounded-full bg-white/20 text-white flex items-center justify-center border border-white/40">
                       <Check className="w-2.5 h-2.5 stroke-[3]" aria-hidden="true" />
                     </div>
                   ) : (
                     <div className="w-3.5 h-3.5 rounded-full border border-border group-hover:border-foreground/40" />
                   )}
                 </div>
-                <span className={cn("mt-1 block text-[11px] leading-normal", isSelected ? "text-foreground/80 dark:text-muted-foreground" : "text-muted-foreground")}>
+                <span className={cn("mt-1 block text-[11px] leading-normal", isSelected ? "text-white/85" : "text-muted-foreground")}>
                   {tone.description}
                 </span>
               </label>

@@ -21,7 +21,7 @@ export const LengthSelector = forwardRef<HTMLFieldSetElement, LengthSelectorProp
         <legend className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">
           Message Length <span className="text-destructive" aria-hidden="true">*</span>
         </legend>
-        <div className="grid grid-cols-3 gap-1.5 p-1 bg-secondary rounded-xl border border-border">
+        <div className="grid grid-cols-3 gap-1.5 p-1 bg-secondary/80 rounded-2xl border border-border">
           {lengths.map((length) => {
             const isSelected = value === length.value;
             const inputId = `length-${length.value}`;
@@ -30,10 +30,10 @@ export const LengthSelector = forwardRef<HTMLFieldSetElement, LengthSelectorProp
                 key={length.value}
                 htmlFor={inputId}
                 className={cn(
-                  "relative flex flex-col items-center justify-center text-center cursor-pointer rounded-lg py-2 px-3 transition-all duration-150 select-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-1",
+                  "relative flex flex-col items-center justify-center text-center cursor-pointer rounded-xl py-2 px-3 transition-all duration-150 select-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-1",
                   isSelected
-                    ? "bg-card text-foreground shadow-subtle border border-border font-bold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-card/50 font-medium",
+                    ? "chip-tactile-active font-bold text-white shadow-md"
+                    : "chip-tactile text-muted-foreground hover:text-foreground font-medium",
                   disabled && "opacity-50 pointer-events-none cursor-not-allowed",
                   error && "ring-1 ring-destructive focus-within:ring-destructive"
                 )}

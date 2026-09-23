@@ -88,29 +88,29 @@ export function ProviderSelector({
             className={cn(
               "flex flex-col items-start gap-1 p-2.5 rounded-xl border text-left transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
               isSelected
-                ? "bg-foreground text-background border-foreground shadow-subtle"
-                : "bg-card text-muted-foreground border-border hover:text-foreground hover:bg-secondary/70"
+                ? "chip-tactile-active text-white"
+                : "chip-tactile text-muted-foreground hover:text-foreground"
             )}
           >
             <div className="flex items-center justify-between w-full">
               <Icon
                 className={cn(
                   "w-3.5 h-3.5 shrink-0",
-                  isSelected ? "text-background" : "text-brand"
+                  isSelected ? "text-white" : "text-brand"
                 )}
               />
               <span
                 className={cn(
                   "text-[9px] font-mono font-bold tracking-tight px-1.5 py-0.5 rounded-md",
                   isSelected
-                    ? "bg-background/20 text-background"
+                    ? "bg-white/20 text-white border border-white/30"
                     : "bg-secondary text-foreground/80 border border-border/50"
                 )}
               >
                 {provider.badge}
               </span>
             </div>
-            <span className={cn("text-xs font-bold leading-tight mt-0.5", isSelected ? "text-background" : "text-foreground")}>
+            <span className={cn("text-xs font-bold leading-tight mt-0.5", isSelected ? "text-white" : "text-foreground")}>
               {provider.name}
             </span>
           </button>

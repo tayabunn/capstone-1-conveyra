@@ -49,11 +49,11 @@ export function ChannelSelector({
             className={cn(
               "flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
               isSelected
-                ? "bg-foreground text-background border-foreground font-bold shadow-subtle"
-                : "bg-card text-muted-foreground border-border hover:text-foreground hover:bg-secondary"
+                ? "chip-tactile-active font-bold"
+                : "chip-tactile hover:text-foreground"
             )}
           >
-            <Icon className={cn("w-3.5 h-3.5 shrink-0", isSelected ? "text-background" : "text-muted-foreground")} />
+            <Icon className={cn("w-3.5 h-3.5 shrink-0", isSelected ? "text-white" : "text-muted-foreground")} />
             <span>{channel.label}</span>
           </button>
         );

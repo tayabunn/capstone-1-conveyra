@@ -59,7 +59,7 @@ function SignInFormContent() {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <div className="relative bg-card/95 backdrop-blur-xl border border-border/80 rounded-3xl shadow-elevated dark:shadow-elevated-dark p-6 sm:p-10 overflow-hidden card-glass-glow">
+      <div className="relative bg-card/95 backdrop-blur-xl border border-border/80 rounded-3xl p-6 sm:p-10 overflow-hidden card-glass-glow">
         {/* Brand Accent Bar */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric via-brand to-electric" />
 
@@ -183,7 +183,7 @@ export default function SignInPage() {
       />
 
       <header className="w-full border-b border-border/80 bg-background/80 backdrop-blur-md">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl h-16 flex items-center justify-between">
+        <div className="w-[90%] max-w-[90%] mx-auto h-16 flex items-center justify-between">
           <ConveyraLogo />
           <ThemeToggle />
         </div>

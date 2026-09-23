@@ -61,14 +61,14 @@ export function GoalSelector({
             className={cn(
               "flex items-center gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold text-left transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
               isSelected
-                ? "bg-brand-subtle text-brand border-brand-border font-bold shadow-subtle dark:bg-brand-subtle/30"
-                : "bg-card text-muted-foreground border-border hover:text-foreground hover:bg-secondary"
+                ? "chip-tactile-active font-bold"
+                : "chip-tactile hover:text-foreground"
             )}
           >
             <Icon
               className={cn(
                 "w-3.5 h-3.5 shrink-0",
-                isSelected ? "text-brand" : "text-muted-foreground"
+                isSelected ? "text-white" : "text-muted-foreground"
               )}
             />
             <span className="truncate">{goal.label}</span>

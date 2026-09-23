@@ -3,9 +3,9 @@ import { Copy, Sparkles, Compass, Shuffle } from "lucide-react";
 export function ResultShowcase() {
   return (
     <section className="py-20 sm:py-28 border-t border-border/80 bg-secondary/15">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div className="w-[90%] max-w-[90%] mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide bg-secondary/80 text-foreground border border-border/80 shadow-sm mb-4">
+          <div className="badge-shiny mb-4">
             <span className="badge-dot" />
             Output Architecture
           </div>
@@ -18,7 +18,7 @@ export function ResultShowcase() {
         </div>
 
         {/* Product Result Surface Mockup */}
-        <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-10 shadow-elevated dark:shadow-elevated-dark space-y-8 card-glass-glow">
+        <div className="rounded-3xl p-6 sm:p-10 space-y-8 card-luminous-tactile">
           {/* Header Bar */}
           <div className="flex items-center justify-between pb-4 border-b border-border/70">
             <div className="flex items-center gap-2.5">
@@ -27,7 +27,7 @@ export function ResultShowcase() {
                 Live Scenario Preview
               </span>
             </div>
-            <span className="px-3 py-1 rounded-full text-xs font-mono font-medium text-muted-foreground bg-secondary/80 border border-border/60">
+            <span className="chip-tactile px-3 py-1 rounded-full text-xs font-mono font-medium text-muted-foreground">
               Manager · Direct · Short
             </span>
           </div>
@@ -35,7 +35,7 @@ export function ResultShowcase() {
           {/* Primary Message */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase px-2.5 py-1 rounded-full bg-secondary border border-border">
+              <span className="chip-tactile font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase px-3 py-1 rounded-full">
                 Output
               </span>
               <span className="text-xs text-muted-foreground flex items-center gap-1.5 font-medium">
@@ -49,7 +49,7 @@ export function ResultShowcase() {
               </p>
             </div>
 
-            <div className="btn-tactile btn-tactile-brand animate-shine px-6 py-3 text-xs tracking-tight select-none">
+            <div className="btn-tactile btn-tactile-brand animate-shine px-6 py-3 text-xs tracking-tight select-none cursor-pointer">
               <Copy className="w-4 h-4" />
               <span>Copy Message</span>
             </div>

@@ -94,7 +94,7 @@ export function CommunicationContextTool({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border/90 bg-card p-5 sm:p-6 shadow-subtle transition-all duration-200 ease-in-out relative overflow-hidden",
+        "rounded-2xl border border-border/90 bg-card p-5 sm:p-6 transition-all duration-200 ease-in-out relative overflow-hidden",
         state === "output-available" && "border-brand/30 dark:border-brand/40 bg-card/95",
         state === "output-error" && "border-destructive/30 bg-destructive/[0.02]",
         className

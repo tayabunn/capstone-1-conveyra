@@ -161,7 +161,7 @@ function GeneratorAppInner() {
     <div 
       id="generator"
       ref={containerRef} 
-      className="relative bg-card/95 backdrop-blur-xl border border-border/80 rounded-3xl shadow-elevated dark:shadow-elevated-dark p-6 sm:p-10 md:p-12 min-h-[420px] transition-all overflow-hidden card-glass-glow"
+      className="relative rounded-3xl p-6 sm:p-10 md:p-12 min-h-[420px] transition-all overflow-hidden card-luminous-tactile"
     >
       {/* Subtle colored accent line at the top of the workspace */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric via-brand to-electric" />

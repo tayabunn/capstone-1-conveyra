@@ -64,7 +64,7 @@ export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {
     <div className="max-w-2xl space-y-8">
       <form onSubmit={handleSave} className="space-y-6">
         {/* 1. Account Profile Card */}
-        <div className="rounded-2xl border border-border bg-card/95 p-6 sm:p-8 space-y-5 shadow-subtle">
+        <div className="rounded-2xl border border-border bg-card/95 p-6 sm:p-8 space-y-5">
           <div className="flex items-center gap-2 text-foreground font-bold text-sm border-b border-border/80 pb-3">
             <User className="w-4 h-4 text-brand" />
             <span>Profile Information</span>
@@ -81,7 +81,7 @@ export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Alex Mercer"
-                className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-xs sm:text-sm text-foreground shadow-subtle focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               />
             </div>
 
@@ -104,7 +104,7 @@ export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {
         </div>
 
         {/* 2. Communication Defaults Card */}
-        <div className="rounded-2xl border border-border bg-card/95 p-6 sm:p-8 space-y-5 shadow-subtle">
+        <div className="rounded-2xl border border-border bg-card/95 p-6 sm:p-8 space-y-5">
           <div className="flex items-center gap-2 text-foreground font-bold text-sm border-b border-border/80 pb-3">
             <Sliders className="w-4 h-4 text-electric" />
             <span>Communication Defaults</span>
@@ -120,7 +120,7 @@ export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {
                 id="tone"
                 value={defaultTone}
                 onChange={(e) => setDefaultTone(e.target.value)}
-                className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs sm:text-sm text-foreground shadow-subtle focus:outline-none focus:ring-2 focus:ring-ring capitalize"
+                className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring capitalize"
               >
                 <option value="professional">Professional</option>
                 <option value="friendly">Friendly</option>
@@ -138,7 +138,7 @@ export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {
                 id="length"
                 value={defaultLength}
                 onChange={(e) => setDefaultLength(e.target.value)}
-                className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs sm:text-sm text-foreground shadow-subtle focus:outline-none focus:ring-2 focus:ring-ring capitalize"
+                className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring capitalize"
               >
                 <option value="short">Short</option>
                 <option value="medium">Medium</option>
@@ -155,7 +155,7 @@ export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {
                 id="channel"
                 value={defaultChannel}
                 onChange={(e) => setDefaultChannel(e.target.value)}
-                className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs sm:text-sm text-foreground shadow-subtle focus:outline-none focus:ring-2 focus:ring-ring capitalize"
+                className="w-full rounded-xl border border-input bg-background px-3 py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring capitalize"
               >
                 <option value="email">Email</option>
                 <option value="slack">Slack</option>
@@ -168,7 +168,7 @@ export function SettingsFormClient({ initialUser }: SettingsFormClientProps) {
         </div>
 
         {/* 3. Appearance */}
-        <div className="rounded-2xl border border-border bg-card/95 p-6 sm:p-8 space-y-4 shadow-subtle flex items-center justify-between">
+        <div className="rounded-2xl border border-border bg-card/95 p-6 sm:p-8 space-y-4 flex items-center justify-between">
           <div>
             <h3 className="text-xs font-bold text-foreground">Theme Preference</h3>
             <p className="text-[11px] text-muted-foreground">
