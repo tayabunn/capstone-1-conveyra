@@ -161,11 +161,8 @@ function GeneratorAppInner() {
     <div 
       id="generator"
       ref={containerRef} 
-      className="relative rounded-3xl p-6 sm:p-10 md:p-12 min-h-[420px] transition-all overflow-hidden card-luminous-tactile"
+      className="relative p-4 sm:p-8 md:p-10 min-h-[420px] transition-all"
     >
-      {/* Subtle colored accent line at the top of the workspace */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric via-brand to-electric" />
-      
       {status === "error" ? (
         <div className="space-y-8" ref={errorContainerRef} tabIndex={-1}>
           <ErrorState error={error || "Unknown error"} onRetry={handleRegenerate} />

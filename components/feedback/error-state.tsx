@@ -7,7 +7,7 @@ interface ErrorStateProps {
 
 export function ErrorState({ error, onRetry }: ErrorStateProps) {
   return (
-    <div className="rounded-2xl border border-destructive/20 bg-destructive/[0.03] p-8 sm:p-10 flex flex-col items-center text-center animate-in fade-in duration-300" role="alert">
+    <div className="rounded-lg border border-destructive/20 bg-destructive/[0.03] p-8 sm:p-10 flex flex-col items-center text-center animate-in fade-in duration-300" role="alert">
       <div className="w-10 h-10 rounded-xl bg-destructive/10 border border-destructive/20 flex items-center justify-center mb-4 text-destructive">
         <AlertCircle className="w-5 h-5" />
       </div>

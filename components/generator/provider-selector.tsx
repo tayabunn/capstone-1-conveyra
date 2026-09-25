@@ -71,7 +71,7 @@ export function ProviderSelector({
     <div
       role="radiogroup"
       aria-label="Select AI provider engine"
-      className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2"
+      className="flex items-stretch gap-2 overflow-x-auto pb-1 pt-0.5 scrollbar-none w-full [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
     >
       {providers.map((provider) => {
         const isSelected = value === provider.value;
@@ -86,13 +86,13 @@ export function ProviderSelector({
             disabled={disabled}
             onClick={() => onChange(provider.value)}
             className={cn(
-              "flex flex-col items-start gap-1 p-2.5 rounded-xl border text-left transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
+              "flex-1 min-w-[130px] sm:min-w-0 shrink-0 sm:shrink flex flex-col items-start justify-between gap-1.5 p-2.5 rounded-lg border text-left transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
               isSelected
                 ? "chip-tactile-active text-white"
                 : "chip-tactile text-muted-foreground hover:text-foreground"
             )}
           >
-            <div className="flex items-center justify-between w-full">
+            <div className="flex items-center justify-between w-full gap-1">
               <Icon
                 className={cn(
                   "w-3.5 h-3.5 shrink-0",
@@ -101,7 +101,7 @@ export function ProviderSelector({
               />
               <span
                 className={cn(
-                  "text-[9px] font-mono font-bold tracking-tight px-1.5 py-0.5 rounded-md",
+                  "text-[9px] font-mono font-bold tracking-tight px-1.5 py-0.5 rounded whitespace-nowrap shrink-0",
                   isSelected
                     ? "bg-white/20 text-white border border-white/30"
                     : "bg-secondary text-foreground/80 border border-border/50"
@@ -110,7 +110,7 @@ export function ProviderSelector({
                 {provider.badge}
               </span>
             </div>
-            <span className={cn("text-xs font-bold leading-tight mt-0.5", isSelected ? "text-white" : "text-foreground")}>
+            <span className={cn("text-xs font-bold leading-tight truncate w-full", isSelected ? "text-white" : "text-foreground")}>
               {provider.name}
             </span>
           </button>

@@ -2,7 +2,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="py-20 sm:py-28 border-t border-border/80 bg-secondary/15 relative">
       <div className="w-[90%] max-w-[90%] mx-auto">
-        <div className="max-w-xl mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <div className="badge-shiny mb-4">
             <span className="badge-dot" />
             Methodology
@@ -11,20 +11,20 @@ export function HowItWorks() {
             How it works
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Three deliberate stages to turn unfiltered thoughts into calibrated, context-aware communication.
+            Three deliberate stages to turn unfiltered thoughts into calibrated, context-aware communication
           </p>
         </div>
         
         {/* Editorial 3-Stage Composition */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative">
           {/* Stage 01 */}
-          <div className="rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
+          <div className="rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-electric drop-shadow-sm">
+                <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-brand drop-shadow-sm">
                   01
                 </span>
-                <span className="chip-tactile font-mono text-[10px] text-electric font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
+                <span className="chip-tactile font-mono text-[10px] text-brand font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
                   Input Stage
                 </span>
               </div>
@@ -35,13 +35,13 @@ export function HowItWorks() {
                 Tell Conveyra what you need to say, what outcome you want, or paste an unfiltered rough draft.
               </p>
             </div>
-            <div className="mt-8 pt-4 border-t border-border/70 text-[11px] font-mono text-muted-foreground">
+            <div className="mt-8 pt-4 border-t border-border/70 text-[11px] font-mono text-brand font-semibold">
               Unfiltered intent preserved
             </div>
           </div>
 
           {/* Stage 02 */}
-          <div className="rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
+          <div className="rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-brand drop-shadow-sm">
@@ -58,14 +58,13 @@ export function HowItWorks() {
                 Select who you are writing to, tune the tone, and set the message length to match the relationship dynamic.
               </p>
             </div>
-            <div className="mt-8 pt-4 border-t border-border/70 text-[11px] font-mono text-muted-foreground">
+            <div className="mt-8 pt-4 border-t border-border/70 text-[11px] font-mono text-brand font-semibold">
               Nuance & boundaries shaped
             </div>
           </div>
 
           {/* Stage 03 */}
-          <div className="rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile relative overflow-hidden group">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric via-brand to-electric" />
+          <div className="rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile relative overflow-hidden group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-brand drop-shadow-sm">
