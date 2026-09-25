@@ -105,9 +105,7 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-[10px] font-bold tracking-widest text-electric uppercase px-3 py-1 rounded-full bg-electric-subtle border border-electric-border">
-              01 — Thought
-            </span>
+            
             <label htmlFor="context" className="text-sm font-bold tracking-tight text-foreground">
               Describe what you want to say <span className="text-destructive" aria-hidden="true">*</span>
             </label>
@@ -161,9 +159,7 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
         {/* Step 02: Recipient */}
         <div className="md:col-span-5 space-y-2">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full bg-brand-subtle border border-brand-border">
-              02 — Recipient
-            </span>
+            
           </div>
           <RecipientSelector
             value={formData.recipient || ""}
@@ -180,8 +176,8 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
         {/* Step 03: Goal */}
         <div className="md:col-span-7 space-y-2">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] font-bold tracking-widest text-electric uppercase px-3 py-1 rounded-full bg-electric-subtle border border-electric-border">
-              03 — Objective
+            <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1.5 rounded-full ">
+              Objective
             </span>
           </div>
           <GoalSelector
@@ -199,8 +195,8 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
         {/* Step 04: Channel */}
         <div className="space-y-2">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] font-bold tracking-widest text-foreground uppercase px-3 py-1 rounded-full bg-secondary border border-border">
-              04 — Channel
+            <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full">
+              Channel
             </span>
           </div>
           <ChannelSelector
@@ -215,9 +211,7 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
         {/* Step 05: Tone */}
         <div className="space-y-2 pt-4">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] font-bold tracking-widest text-lavender-foreground uppercase px-3 py-1 rounded-full bg-lavender border border-brand-border/40">
-              05 — Tone
-            </span>
+          
           </div>
           <ToneSelector
             value={formData.tone}
@@ -236,9 +230,7 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
         {/* Step 06: Length */}
         <div className="space-y-2">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] font-bold tracking-widest text-foreground uppercase px-3 py-1 rounded-full bg-secondary border border-border">
-              06 — Length
-            </span>
+          
           </div>
           <LengthSelector
             value={formData.length}
@@ -255,9 +247,7 @@ export function MessageForm({ initialData, onSubmit, onCancel, isLoading }: Mess
         <div className="space-y-2 pt-4">
           <div className="flex items-center justify-between mb-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full bg-brand-subtle border border-brand-border">
-                07 — AI Engine
-              </span>
+              
               <span className="text-xs font-semibold text-foreground">Select Model Provider</span>
             </div>
             <span className="text-[11px] text-muted-foreground">Free high-speed multi-provider</span>

@@ -32,7 +32,7 @@ export function ChannelSelector({
     <div
       role="radiogroup"
       aria-label="Select delivery channel"
-      className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2"
+      className="flex items-center gap-2 overflow-x-auto pb-1 pt-0.5 scrollbar-none w-full [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
     >
       {channels.map((channel) => {
         const isSelected = value === channel.value;
@@ -47,7 +47,7 @@ export function ChannelSelector({
             disabled={disabled}
             onClick={() => onChange(channel.value)}
             className={cn(
-              "flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
+              "flex-1 min-w-[85px] sm:min-w-0 shrink-0 sm:shrink flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap",
               isSelected
                 ? "chip-tactile-active font-bold"
                 : "chip-tactile hover:text-foreground"
