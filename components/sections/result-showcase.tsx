@@ -9,16 +9,16 @@ export function ResultShowcase() {
             <span className="badge-dot" />
             Output Architecture
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            Complete communication intelligence.
+          <h2 className="text-4xl w-full sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            Complete communication intelligence
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-muted-foreground">
-            Conveyra delivers every output paired with strategic rationale and an alternative perspective.
+          <p className="mt-3 text-sm max-w-full sm:text-base text-muted-foreground">
+            Conveyra delivers every output paired with strategic rationale and an alternative perspective
           </p>
         </div>
 
         {/* Product Result Surface Mockup */}
-        <div className="rounded-3xl p-6 sm:p-10 space-y-8 card-luminous-tactile">
+        <div className="rounded-lg p-6 sm:p-10 space-y-8 card-luminous-tactile">
           {/* Header Bar */}
           <div className="flex items-center justify-between pb-4 border-b border-border/70">
             <div className="flex items-center gap-2.5">
@@ -43,7 +43,7 @@ export function ResultShowcase() {
               </span>
             </div>
 
-            <div className="rounded-2xl border border-border/80 bg-background/90 p-6 sm:p-8 shadow-subtle">
+            <div className="rounded-lg border border-border/80 bg-background/90 p-6 sm:p-8 shadow-subtle">
               <p className="text-foreground font-normal text-base sm:text-xl leading-relaxed tracking-[-0.01em]">
                 &ldquo;Hi Alex, I wanted to let you know ahead of time that the client report will be delivered by Thursday at 2 PM instead of Tuesday morning due to delayed API data. All core sections are on track, and I will share an early preview tomorrow.&rdquo;
               </p>
@@ -64,7 +64,7 @@ export function ResultShowcase() {
                   Why This Works
                 </span>
               </div>
-              <div className="rounded-2xl border border-brand-border/40 bg-brand-subtle/30 dark:bg-brand-subtle/15 p-5 sm:p-6 h-full shadow-subtle">
+              <div className="rounded-lg border border-brand-border/40 bg-brand-subtle/30 dark:bg-brand-subtle/15 p-5 sm:p-6 h-full shadow-subtle">
                 <p className="text-xs sm:text-sm text-foreground leading-relaxed font-normal">
                   Flags the delay proactively with a concrete timeline, eliminates defensive apologies, and assures the recipient that work is actively moving forward.
                 </p>
@@ -78,7 +78,7 @@ export function ResultShowcase() {
                   Alternative Approach
                 </span>
               </div>
-              <div className="rounded-2xl border border-electric-border/40 bg-electric-subtle/30 dark:bg-electric-subtle/15 p-5 sm:p-6 h-full shadow-subtle">
+              <div className="rounded-lg border border-electric-border/40 bg-electric-subtle/30 dark:bg-electric-subtle/15 p-5 sm:p-6 h-full shadow-subtle">
                 <p className="text-xs sm:text-sm text-foreground leading-relaxed font-normal">
                   &ldquo;Quick update on the report: API downtime shifted our timeline. I can send the draft now without raw numbers, or provide the complete version on Thursday. Which works better for your review?&rdquo;
                 </p>

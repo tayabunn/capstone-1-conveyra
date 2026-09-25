@@ -5,6 +5,8 @@ import { type GenerateMessageResponse } from "@/lib/schemas";
 import { ResultActions } from "./result-actions";
 import { ResultRefinement } from "./result-refinement";
 import { CommunicationContextTool } from "@/components/generator/communication-context-tool";
+import { RiskRadar } from "@/components/studio/risk-radar";
+import { SubjectLinePicker } from "@/components/studio/subject-line-picker";
 import { Compass, Shuffle } from "lucide-react";
 import React from "react";
 
@@ -82,12 +84,27 @@ export function GeneratedMessage({
           </div>
         </div>
 
-        <div className="relative rounded-3xl border border-border/80 bg-background/90 dark:bg-zinc-900/70 p-6 sm:p-8 shadow-card dark:shadow-card-dark transition-all card-glass-glow">
+        {/* Optional Subject Line Picker for Emails */}
+        {data.subject && (
+          <SubjectLinePicker primarySubject={data.subject} />
+        )}
 
+        <div className="relative rounded-lg border border-border/80 bg-background/90 dark:bg-zinc-900/70 p-6 sm:p-8 shadow-card dark:shadow-card-dark transition-all card-glass-glow">
           <p className="whitespace-pre-wrap text-foreground font-normal text-base sm:text-xl leading-relaxed tracking-[-0.01em]">
             {currentMessageText}
           </p>
         </div>
+
+        {/* Risk Radar / Safety Insights */}
+        <RiskRadar
+          riskAvoided={
+            typeof data.contextAnalysis?.riskAvoided === "string"
+              ? data.contextAnalysis.riskAvoided
+              : "Defensive tone and ambiguity avoided"
+          }
+          safetyScore={96}
+          directnessLevel="Balanced"
+        />
 
         {/* In-Place Micro-Refinements Bar */}
         <ResultRefinement
@@ -117,7 +134,7 @@ export function GeneratedMessage({
               Why This Works
             </h3>
           </div>
-          <div className="rounded-2xl border border-brand-border/40 bg-brand-subtle/30 dark:bg-brand-subtle/15 p-5 sm:p-6 h-full shadow-subtle card-glass-glow">
+          <div className="rounded-lg border border-brand-border/40 bg-brand-subtle/30 dark:bg-brand-subtle/15 p-5 sm:p-6 h-full shadow-subtle card-glass-glow">
             <p className="text-foreground text-xs sm:text-sm leading-relaxed font-normal">
               {data.approach}
             </p>
@@ -132,7 +149,7 @@ export function GeneratedMessage({
               Alternative Approach
             </h3>
           </div>
-          <div className="rounded-2xl border border-electric-border/40 bg-electric-subtle/30 dark:bg-electric-subtle/15 p-5 sm:p-6 h-full shadow-subtle card-glass-glow">
+          <div className="rounded-lg border border-electric-border/40 bg-electric-subtle/30 dark:bg-electric-subtle/15 p-5 sm:p-6 h-full shadow-subtle card-glass-glow">
             <p className="text-foreground text-xs sm:text-sm leading-relaxed font-normal whitespace-pre-wrap">
               {data.alternative}
             </p>

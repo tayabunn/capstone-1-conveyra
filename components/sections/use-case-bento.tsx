@@ -4,27 +4,27 @@ export function UseCaseBento() {
   return (
     <section id="use-cases" className="py-20 sm:py-28 border-t border-border/80 bg-background relative">
       <div className="w-[90%] max-w-[90%] mx-auto">
-        <div className="max-w-2xl mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <div className="badge-shiny mb-4">
             <span className="badge-dot" />
             Context Dynamics
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            Crafted for moments when words have weight.
+            Crafted for moments when words have weight
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Different recipients demand different approaches. Conveyra calibrates tone, assertiveness, and diplomacy for every dynamic.
+            Different recipients demand different approaches. Conveyra calibrates tone, assertiveness, and diplomacy for every dynamic
           </p>
         </div>
 
         {/* Asymmetric Bento Grid with distinct accent motifs */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
           {/* Card 1: Clients (7 cols) */}
-          <div className="md:col-span-7 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
+          <div className="md:col-span-7 rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-electric-subtle text-electric flex items-center justify-center border border-electric-border shadow-sm">
+                  <div className="w-10 h-10 rounded-lg bg-electric-subtle text-electric flex items-center justify-center border border-electric-border shadow-sm">
                     <Briefcase className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
@@ -52,11 +52,11 @@ export function UseCaseBento() {
           </div>
 
           {/* Card 2: Work (5 cols) */}
-          <div className="md:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
+          <div className="md:col-span-5 rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-brand-subtle text-brand flex items-center justify-center border border-brand-border shadow-sm">
+                  <div className="w-10 h-10 rounded-lg bg-brand-subtle text-brand flex items-center justify-center border border-brand-border shadow-sm">
                     <Building2 className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
@@ -82,11 +82,11 @@ export function UseCaseBento() {
           </div>
 
           {/* Card 3: Feedback (5 cols) */}
-          <div className="md:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
+          <div className="md:col-span-5 rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center border border-emerald-500/20 shadow-sm">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center border border-emerald-500/20 shadow-sm">
                     <MessageSquare className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
@@ -112,11 +112,11 @@ export function UseCaseBento() {
           </div>
 
           {/* Card 4: Personal (7 cols) */}
-          <div className="md:col-span-7 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
+          <div className="md:col-span-7 rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-lavender text-lavender-foreground flex items-center justify-center border border-brand-border/40 shadow-sm">
+                  <div className="w-10 h-10 rounded-lg bg-lavender text-lavender-foreground flex items-center justify-center border border-brand-border/40 shadow-sm">
                     <Users className="w-4 h-4" />
                   </div>
                   <span className="font-mono text-xs font-bold tracking-tight text-foreground uppercase">
