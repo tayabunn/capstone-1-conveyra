@@ -150,6 +150,7 @@ INSTRUCTIONS:
 
 Respond ONLY with a valid JSON object matching this schema:
 {
+  "subject": "Optional concise subject line (for email channel)",
   "message": "The suggested message text",
   "approach": "Why this approach works",
   "alternative": "An alternative version of the message"
@@ -160,10 +161,11 @@ Respond ONLY with a valid JSON object matching this schema:
     const timeoutAbort = new AbortController();
     const timeoutId = setTimeout(() => timeoutAbort.abort(), 25_000);
 
-    let aiJson: { message: string; approach: string; alternative: string };
+    let aiJson: { subject?: string; message: string; approach: string; alternative: string };
     let usedProvider = "AI Provider";
     try {
       const result = await generateStructuredOutput<{
+        subject?: string;
         message: string;
         approach: string;
         alternative: string;

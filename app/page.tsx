@@ -8,6 +8,8 @@ import { ResultShowcase } from "@/components/sections/result-showcase";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/layout/footer";
 
+import { AppleDeviceMockup } from "@/components/ui/apple-device-mockup";
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background bg-grid-subtle text-foreground selection:bg-brand selection:text-brand-foreground overflow-x-hidden relative">
@@ -24,14 +26,24 @@ export default function Home() {
         {/* 2. Editorial Hero */}
         <Hero />
 
-        {/* 3. Interactive Product Demo Preview */}
+        {/* 3. Interactive Product Demo Preview in Apple Tablet / Mac Mockup */}
         <section id="demo" className="w-[90%] max-w-[90%] mx-auto relative z-10 pb-16 sm:pb-24">
-          <div className="text-center mb-6 space-y-1">
-            <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-2.5 py-1 rounded-md bg-brand-subtle border border-brand-border">
+          <div className="text-center mb-8 space-y-2">
+            <div className="badge-shiny mb-2">
+              <span className="badge-dot" />
               Interactive Calibration Preview
-            </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Try the live calibration workspace
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-full mx-auto">
+              Simulate high-stakes communication calibration in a live simulated studio environment
+            </p>
           </div>
-          <GeneratorApp />
+
+          <AppleDeviceMockup>
+            <GeneratorApp />
+          </AppleDeviceMockup>
         </section>
 
         {/* 4. Thought -> Message Transformation */}
