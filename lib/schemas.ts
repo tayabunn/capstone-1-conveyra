@@ -38,6 +38,7 @@ export type RefinementOption = (typeof refinementOptions)[number];
 export const modelProviderOptions = [
   "auto",
   "gemini",
+  "claude",
   "groq",
   "cerebras",
   "openrouter",
@@ -54,7 +55,17 @@ export const generateMessageSchema = z.object({
     .string()
     .min(10, "Please provide a bit more detail (at least 10 characters).")
     .max(2000, "Please keep the description under 2,000 characters."),
-  recipient: z.enum(["manager", "client", "colleague", "friend", "family", "other"], {
+  recipient: z.enum([
+    "manager",
+    "client",
+    "executive",
+    "colleague",
+    "direct_report",
+    "vendor",
+    "friend",
+    "family",
+    "other",
+  ], {
     message: "Please select a valid recipient.",
   }),
   goal: z
@@ -165,6 +176,7 @@ export type CommunicationContextOutput = z.infer<typeof communicationContextOutp
  * Response schema for generated message output, extended with optional structured context analysis and saved message ID
  */
 export const generateMessageResponseSchema = z.object({
+  subject: z.string().optional(),
   message: z.string().min(1),
   approach: z.string().min(1),
   alternative: z.string().min(1),

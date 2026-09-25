@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 export interface LLMProviderConfig {
-  id: "gemini" | "groq" | "cerebras" | "openrouter" | "github";
+  id: "gemini" | "claude" | "groq" | "cerebras" | "openrouter" | "github";
   name: string;
   isAvailable: () => boolean;
   generate: (params: GenerateParams) => Promise<string>;
@@ -12,7 +12,7 @@ export interface GenerateParams {
   systemPrompt?: string;
   temperature?: number;
   abortSignal?: AbortSignal;
-  preferredProvider?: "auto" | "gemini" | "groq" | "cerebras" | "openrouter" | "github";
+  preferredProvider?: "auto" | "gemini" | "claude" | "groq" | "cerebras" | "openrouter" | "github";
 }
 
 /**
@@ -138,7 +138,42 @@ export function getLLMProviders(): LLMProviderConfig[] {
       },
     },
 
-    // 2. Groq (Ultra-fast free inference ~300+ tok/sec - Llama 3.3 70B)
+    // 2. Anthropic Claude 3.5 Sonnet
+    {
+      id: "claude",
+      name: "Anthropic Claude 3.5 Sonnet",
+      isAvailable: () => Boolean(process.env.ANTHROPIC_API_KEY),
+      generate: async ({ prompt, systemPrompt, temperature = 0.7, abortSignal }) => {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": process.env.ANTHROPIC_API_KEY!,
+            "anthropic-version": "2023-06-01",
+          },
+          body: JSON.stringify({
+            model: "claude-3-5-sonnet-20241022",
+            max_tokens: 2048,
+            temperature,
+            system: (systemPrompt || "") + "\nYou must strictly output valid raw JSON and nothing else.",
+            messages: [{ role: "user", content: prompt }],
+          }),
+          signal: abortSignal,
+        });
+
+        if (!res.ok) {
+          const errorText = await res.text().catch(() => "");
+          throw new Error(`Anthropic HTTP ${res.status}: ${errorText || res.statusText}`);
+        }
+
+        const data = await res.json();
+        const content = data?.content?.[0]?.text;
+        if (!content) throw new Error("Anthropic returned empty content.");
+        return content;
+      },
+    },
+
+    // 3. Groq (Ultra-fast free inference ~300+ tok/sec - Llama 3.3 70B)
     {
       id: "groq",
       name: "Groq (Llama 3.3 70B)",
