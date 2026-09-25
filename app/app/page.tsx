@@ -9,7 +9,7 @@ export default function WorkspacePage() {
           <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-2 py-0.5 rounded-md bg-brand-subtle border border-brand-border">
             Interactive Workspace
           </span>
-          <span className="text-xs text-muted-foreground">• Gemini 3.6 Calibrated</span>
+          <span className="text-xs text-muted-foreground">• Context-Calibrated Engine</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
           Calibrate Communication

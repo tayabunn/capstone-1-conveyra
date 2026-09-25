@@ -59,10 +59,7 @@ function SignInFormContent() {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <div className="relative bg-card/95 backdrop-blur-xl border border-border/80 rounded-3xl p-6 sm:p-10 overflow-hidden card-glass-glow">
-        {/* Brand Accent Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric via-brand to-electric" />
-
+      <div className="relative bg-card/95 backdrop-blur-xl border border-border/80 rounded-lg p-6 sm:p-10 overflow-hidden card-glass-glow">
         <div className="mb-8 text-center space-y-2">
           <div className="inline-block mb-2">
             <span className="font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full bg-brand-subtle border border-brand-border">
@@ -73,7 +70,7 @@ function SignInFormContent() {
             Welcome back
           </h1>
           <p className="text-xs sm:text-sm text-muted-foreground">
-            Sign in to access your calibrated communication workspace.
+            Sign in to access your calibrated communication workspace
           </p>
         </div>
 
