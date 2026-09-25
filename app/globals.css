@@ -288,7 +288,7 @@
     0px 1px 0px 0px rgba(255, 255, 255, 0.6) inset,
     0px 6px 18px 0px rgba(109, 40, 217, 0.45),
     0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  transform: translateY(-1px);
+  transform: none;
 }
 
 /* Dark Surface Tactile Button (Aigocy Obsidian) */
@@ -313,7 +313,7 @@
     0px 1px 0px 0px rgba(255, 255, 255, 0.35) inset,
     0px 6px 16px 0px rgba(0, 0, 0, 0.5);
   border-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-1px);
+  transform: none;
 }
 
 /* Secondary Light / Subtle Tactile Button */
@@ -337,7 +337,7 @@
 }
 
 .btn-tactile-secondary:hover {
-  transform: translateY(-1px);
+  transform: none;
   border-color: var(--ring);
 }
 
@@ -447,7 +447,7 @@
 .card-glass-glow:hover {
   border-color: rgba(139, 92, 246, 0.45);
   box-shadow: none;
-  transform: translateY(-2px);
+  transform: none;
 }
 
 /* Shiny Tactile Luminous Frame */
@@ -459,7 +459,7 @@
     var(--card);
   border: 1px solid var(--border);
   box-shadow: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s ease;
 }
 
 .dark .card-luminous-tactile {
@@ -473,7 +473,7 @@
 .card-luminous-tactile:hover {
   border-color: rgba(139, 92, 246, 0.5);
   box-shadow: none;
-  transform: translateY(-2px);
+  transform: none;
 }
 
 /* Shiny Metallic Text Gradient */
@@ -547,7 +547,7 @@
 
 .chip-tactile:hover {
   border-color: var(--brand);
-  transform: translateY(-1px);
+  transform: none;
   box-shadow: 
     0px 1px 0px 0px rgba(255, 255, 255, 0.2) inset,
     0px 4px 12px -2px rgba(109, 40, 217, 0.18);
@@ -595,6 +595,20 @@
   max-width: 90% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* Floating Micro-Animation */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: float-subtle 6s ease-in-out infinite;
 }
 
 
