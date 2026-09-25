@@ -10,17 +10,17 @@ export function TransformationSection() {
             Transformation
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            From raw hesitation to calibrated clarity.
+            From raw hesitation to calibrated clarity
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Say what needs to be said without creating unnecessary friction or losing your voice.
+            Say what needs to be said without creating unnecessary friction or losing your voice
           </p>
         </div>
 
         {/* Asymmetric Editorial Transformation Demonstration */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Left: Raw Thought Input */}
-          <div className="lg:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
+          <div className="lg:col-span-5 rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile group">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="chip-tactile font-mono text-[10px] font-bold tracking-widest text-electric uppercase px-3 py-1 rounded-full">
@@ -28,7 +28,7 @@ export function TransformationSection() {
                 </span>
                 <span className="text-xs text-muted-foreground font-mono">Unfiltered</span>
               </div>
-              <div className="rounded-2xl border border-border/80 bg-secondary/40 p-5 shadow-inner">
+              <div className="rounded-lg border border-border/80 bg-secondary/40 p-5 shadow-inner">
                 <p className="text-foreground/90 font-normal text-sm sm:text-base leading-relaxed italic">
                   &ldquo;I don&apos;t want to do another round of revisions for free, but I don&apos;t want to sound difficult.&rdquo;
                 </p>
@@ -55,8 +55,7 @@ export function TransformationSection() {
           </div>
 
           {/* Right: Conveyra Calibrated Result */}
-          <div className="lg:col-span-7 rounded-3xl p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile relative overflow-hidden group">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric via-brand to-electric" />
+          <div className="lg:col-span-7 rounded-lg p-6 sm:p-8 flex flex-col justify-between card-luminous-tactile relative overflow-hidden group">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="chip-tactile font-mono text-[10px] font-bold tracking-widest text-brand uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
@@ -65,7 +64,7 @@ export function TransformationSection() {
                 </span>
                 <span className="text-xs text-muted-foreground font-mono">Ready to send</span>
               </div>
-              <div className="rounded-2xl border border-border/80 bg-background/90 p-6 shadow-subtle">
+              <div className="rounded-lg border border-border/80 bg-background/90 p-6 shadow-subtle">
                 <p className="text-foreground text-sm sm:text-base md:text-lg leading-relaxed font-normal">
                   &ldquo;Thanks for sending over these adjustments. Because they expand on the original scope of our milestone, I want to make sure we allocate the right time. I can prepare a brief estimate for the added scope, or we can queue these for the next phase. Let me know which direction works best for you.&rdquo;
                 </p>
@@ -73,8 +72,7 @@ export function TransformationSection() {
             </div>
 
             <div className="pt-5 mt-5 border-t border-border/70 flex items-center justify-between text-xs text-muted-foreground font-mono">
-              <span className="text-electric font-medium">Boundary enforced</span>
-              <span>·</span>
+              <span className="text-brand font-medium">Boundary enforced</span>
               <span className="text-brand font-medium">Relationship preserved</span>
             </div>
           </div>
