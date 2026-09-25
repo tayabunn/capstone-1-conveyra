@@ -7,6 +7,7 @@ import {
   Sparkles,
   History,
   Bookmark,
+  Users,
   Settings,
   Plus,
   Compass,
@@ -28,6 +29,11 @@ const navItems = [
     label: "New Message",
     href: "/app",
     icon: Sparkles,
+  },
+  {
+    label: "Personas",
+    href: "/app/personas",
+    icon: Users,
   },
   {
     label: "History",

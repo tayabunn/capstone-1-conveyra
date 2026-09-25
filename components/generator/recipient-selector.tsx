@@ -28,12 +28,15 @@ export const RecipientSelector = forwardRef<HTMLSelectElement, RecipientSelector
             {...props}
           >
             <option value="" disabled>Select a recipient...</option>
-            <option value="manager">Manager</option>
-            <option value="client">Client</option>
-            <option value="colleague">Colleague</option>
-            <option value="friend">Friend</option>
-            <option value="family">Family</option>
-            <option value="other">Other</option>
+            <option value="client">Client / External Partner</option>
+            <option value="manager">Manager / Team Lead</option>
+            <option value="executive">Executive Leadership (VP / C-Level)</option>
+            <option value="colleague">Peer / Cross-Functional Colleague</option>
+            <option value="direct_report">Direct Report / Mentee</option>
+            <option value="vendor">Vendor / Subcontractor</option>
+            <option value="friend">Friend / Acquaintance</option>
+            <option value="family">Family Member</option>
+            <option value="other">Other Custom Dynamic</option>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted-foreground group-hover:text-foreground transition-colors">
             <ChevronDown className="h-4 w-4" />

@@ -43,28 +43,17 @@ export async function Header() {
               href="/app"
               className="btn-tactile btn-tactile-brand animate-shine px-4 py-2 text-xs tracking-tight"
             >
-              <Sparkles className="w-3.5 h-3.5 text-lavender" />
               <span>Go to Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </Link>
           ) : (
-            <>
-              <Link
-                href="/sign-in"
-                className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors px-3 py-1.5 rounded-full hover:bg-secondary/70"
-              >
-                Sign In
-              </Link>
-
-              <Link
-                href="/sign-up"
-                className="btn-tactile btn-tactile-brand animate-shine px-4 py-2 text-xs tracking-tight"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-lavender" />
-                <span>Start Writing</span>
-                <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-              </Link>
-            </>
+            <Link
+              href="/sign-up"
+              className="btn-tactile btn-tactile-brand animate-shine px-4 py-2 text-xs tracking-tight"
+            >
+              <span>Start Writing</span>
+              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </Link>
           )}
         </nav>
       </div>
