@@ -98,9 +98,8 @@ export function GeneratedMessage({
         {/* Risk Radar / Safety Insights */}
         <RiskRadar
           riskAvoided={
-            typeof data.contextAnalysis?.riskAvoided === "string"
-              ? data.contextAnalysis.riskAvoided
-              : "Defensive tone and ambiguity avoided"
+            data.contextAnalysis?.risks?.[0] ||
+            "Defensive tone and ambiguity avoided"
           }
           safetyScore={96}
           directnessLevel="Balanced"
