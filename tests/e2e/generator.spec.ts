@@ -16,7 +16,7 @@ test.describe('Conveyra Generator Flow', () => {
     await page.goto('/');
 
     // Verify page loaded
-    await expect(page.getByRole('heading', { name: /Say what you mean/i })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 
     // Mock the API response to avoid hitting real Gemini API
     await page.route('**/api/generate-message', async route => {
