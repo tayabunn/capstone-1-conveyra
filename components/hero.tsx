@@ -481,7 +481,7 @@ export function Hero() {
           </h1>
           
           {/* Supporting Copy */}
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed font-normal mb-9">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto text-balance leading-relaxed font-normal mb-9">
             Conveyra turns your rough thoughts into clear, calibrated messages — shaped around who you&apos;re talking to, your channel, what you mean, and how you want to sound
           </p>
 
