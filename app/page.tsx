@@ -36,7 +36,7 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
               Try the live calibration workspace
             </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground max-w-full mx-auto">
+            <p className="text-base sm:text-base text-muted-foreground max-w-full mx-auto">
               Simulate high-stakes communication calibration in a live simulated studio environment
             </p>
           </div>
